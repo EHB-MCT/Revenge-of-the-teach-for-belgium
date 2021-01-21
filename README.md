@@ -1,7 +1,20 @@
-# Revenge-of-the-teach-for-belgium
+# Dream Team Episode 3: Revenge of the Teach for Belgium
+
+## Setup
+We don't have any Node packages but once we do next week, you can build and run the code like this. 
+
+
+
+
+npm install
+node index.js
+
+
+
+
+
 
 ## Technologieën in gebruik
-
 ### Electronica: 
 - Arduino 
 - [Johnny Five](http://johnny-five.io/)
