@@ -12,9 +12,9 @@
 - Markov chain (progressions)
 
 ### Back-end:    
-Node.js
-[Tone.js](https://tonejs.github.io/)
-Some MIDI library we still need to look for.
+- Node.js
+- [Tone.js](https://tonejs.github.io/)
+- Some MIDI library we still need to look for.
 
 
 ### Inspiration
