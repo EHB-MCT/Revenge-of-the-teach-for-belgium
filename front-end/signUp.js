@@ -1,13 +1,5 @@
 'use strict';
 
-// import {
-//     resolve
-// } from "url";
-// import {
-//     rejects
-// } from "assert";
-
-
 let counter = 1;
 let userData = [];
 let userCounter = 0;
