@@ -6,44 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://use.typekit.net/zfj8snb.css">
     <title>Welcome</title>
 </head>
 
 <body>
-    <div class="container h-100">
-        <div class="row align-items-center h-100">
-            <div class="col-6 mx-auto">
-                <div class="jumbotron">
-                    <form id="countForm">
-                        <div class="form-group">
-                            <h1>Welcome, register how many people are going to play.</h1>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="radioButton" id="radioButton2"
-                                    value="2" checked>
-                                <label class="form-check-label" for="radioButton2">
-                                    2
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="radioButton" id="radioButton3"
-                                    value="3">
-                                <label class="form-check-label" for="radioButton3">
-                                    3
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="radioButton" id="radioButton4"
-                                    value="4">
-                                <label class="form-check-label" for="radioButton3">
-                                    4
-                                </label>
-                            </div>
-                        </div>
-                        <button id="nextButtonUser" type="submit" class="btn btn-primary">Next</button>
-                    </form>
+    <div class="big-container">
+        <form class="form-container" id="countForm">
+            <div class="log-in-container">
+                <h1 class="form-title">Welcome, register how many people are going to play.</h1>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radioButton" id="radioButton2" value="2" checked>
+                    <label class="form-check-label" for="radioButton2">
+                        2
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radioButton" id="radioButton3" value="3">
+                    <label class="form-check-label" for="radioButton3">
+                        3
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radioButton" id="radioButton4" value="4">
+                    <label class="form-check-label" for="radioButton3">
+                        4
+                    </label>
+                </div>
+                <div class="form-button-container">
+                    <button id="nextButtonUser" type="submit" class="btn btn-primary form-next-button">Next</button>
                 </div>
             </div>
-        </div>
+
+        </form>
     </div>
 
     <script src="signUp.js"></script>
