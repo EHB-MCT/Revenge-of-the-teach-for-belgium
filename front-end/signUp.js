@@ -20,7 +20,6 @@ function setTotalUserCount() {
     });
 }
 
-
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     if (counter == 0) {
@@ -78,7 +77,6 @@ function dataSaveOfUser() {
         }
     }
 }
-
 
 async function apiCallDataOfUser() {
     console.log(userData);
