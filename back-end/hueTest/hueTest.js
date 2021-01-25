@@ -1,6 +1,6 @@
 'use strict';
 var five = require("johnny-five"),
-board, buttonR, buttonB, buttonY, buttonG, buttonP, potentio, breadOne;
+board, buttonR, buttonB, buttonY, buttonG, buttonP, breadOne;
 
 const fetch = require("node-fetch");
 const host = "http://192.168.1.119";
@@ -18,9 +18,6 @@ let activeG = true;
 let activeY = true;
 let activeP = true;
 
-let potVal = 0;
-let potBuffer = 20;
-
 board = new five.Board();
 
 board.on("ready", async function(){
@@ -31,7 +28,6 @@ board.on("ready", async function(){
   buttonB = new five.Button(46);
   buttonY = new five.Button(50);
   buttonG = new five.Button(52);
-  potentio = new five.Sensor("A7");
 
   breadOne.on();
   
@@ -119,15 +115,4 @@ board.on("ready", async function(){
   });
 
   
-  potentio.on("change", () => {
-    if(potVal - potBuffer > potentio.value || potVal + potBuffer < potentio.value){
-      potVal = potentio.value;
-      fetch(url, {
-        method: 'PUT',
-        body: JSON.stringify({
-          "bri": potentio.scaleTo(0, 255)
-        })
-      });
-    }
-  });
 });
