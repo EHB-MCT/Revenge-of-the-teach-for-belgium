@@ -1,57 +1,133 @@
+'use strict';
 var five = require("johnny-five"),
-  board, buttonOne, buttonTwo;
-  const fetch = require("node-fetch");
+board, buttonR, buttonB, buttonY, buttonG, buttonP, potentio, breadOne;
 
-  const host = "http://192.168.1.108"; // verander dees
-  const username = "HuTtUaX2kulVKfQns026uFDZA3JlstsGjTsD2N1p"; // dees mss ook
-  const hueUrl = `${host}/api/${username}`;
-  const lampID = 1; // dees mss ook
+const fetch = require("node-fetch");
+const host = "http://192.168.1.119";
+const username = "5Jgaedon0HXLnePLPgxWILxb42n5mcf08TRCsua7"; // dees mss ook
+const lampID = 3;
+const hueUrl = `${host}/api/${username}/lights/${lampID}`;
+const url = `${hueUrl}/state`;
+
+let lightBriMin = 51;
+let timer = 3000;
+
+let activeR = true;
+let activeB = true;
+let activeG = true;
+let activeY = true;
+let activeP = true;
+
+let potVal = 0;
+let potBuffer = 20;
 
 board = new five.Board();
 
-board.on("ready", function() {
+board.on("ready", async function(){
 
-  // Create a new `button` hardware instance.
-  // This example allows the button module to
-  // create a completely default instance
-  buttonOne = new five.Button(8);
-  buttonTwo = new five.Button(9);
+  breadOne = new five.Led(40);
+  buttonP = new five.Button(42);
+  buttonR = new five.Button(44);
+  buttonB = new five.Button(46);
+  buttonY = new five.Button(50);
+  buttonG = new five.Button(52);
+  potentio = new five.Sensor("A7");
 
-  // Inject the `button` hardware into
-  // the Repl instance's context;
-  // allows direct command line access
+  breadOne.on();
+  
   board.repl.inject({
-    button: buttonOne,
-    button: buttonTwo
+    button: buttonR,
+    button: buttonG,
+    button: buttonY,
+    button: buttonB,
+    button: buttonP,
+    Led: breadOne
   });
 
-  // Button Event API
-
-  // "down" the button is pressed
-  buttonOne.on("down", function() {
-    fetch(`${hueUrl}/lights/${lampID}/state`, {
-      method: 'PUT',
-      body: JSON.stringify(
-        {
-            "on": true,
-            "bri": 254,
-            "hue": 23859,
-            "sat": 254
+    buttonR.on("down", async () => {
+      breadOne.off();
+      setTimeout(() => {breadOne.on();}, timer);
+        for(var i = 255; i >= lightBriMin; i-= 10){
+          fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify({
+              "hue": 65179,
+              "bri": i
+            })
+          });
         }
         
-      )
     });
+  
+  
+
+  buttonB.on("down", () => {
+    breadOne.off();
+    setTimeout(() => {breadOne.on();}, timer);
+    for(var i = 255; i >= lightBriMin; i-= 10){
+      fetch(url, {
+        method: 'PUT',
+        body: JSON.stringify({
+          "hue": 45968,
+          "bri": i
+        })
+      });
+    }
+    
   });
 
-  buttonTwo.on("down", function() {
-    fetch(`${hueUrl}/lights/1/state`, {
-      method: 'PUT',
-      body: JSON.stringify( {
-        "on": true,
-        "bri": 254,
-        "hue": 45824,
-        "sat": 254
-      })
-    });
+  buttonP.on("down", () => {
+    breadOne.off();
+    setTimeout(() => {breadOne.on();}, timer);
+    for(var i = 255; i >= lightBriMin; i-= 10){
+      fetch(url, {
+        method: 'PUT',
+        body: JSON.stringify({
+          "hue": 49703,
+          "bri": i
+        })
+      });
+    }
+  });
+
+  buttonY.on("down", () => {
+    breadOne.off();
+    setTimeout(()=> {breadOne.on();}, timer);
+    for(var i = 255; i >= lightBriMin; i-= 10){
+      fetch(url, {
+        method: 'PUT',
+        body: JSON.stringify({
+          "hue": 9676,
+          "bri": i
+        })
+      });
+    }
+  });
+
+  buttonG.on("down", () => {
+    breadOne.off();
+    setTimeout(()=>{breadOne.on();}, timer)
+    for(var i = 255; i >= lightBriMin; i-= 10){
+      fetch(url, {
+        method: 'PUT',
+        body: JSON.stringify({
+          "hue": 23114,
+          "bri": i
+        })
+      });
+    }
+  });
+
+  
+  potentio.on("change", () => {
+    if(potVal - potBuffer > potentio.value || potVal + potBuffer < potentio.value){
+      potVal = potentio.value;
+      fetch(url, {
+        method: 'PUT',
+        body: JSON.stringify({
+          "bri": potentio.scaleTo(0, 255)
+        })
+      });
+    }
   });
 });
