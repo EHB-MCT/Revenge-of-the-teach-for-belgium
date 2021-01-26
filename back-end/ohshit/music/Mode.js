@@ -1,7 +1,7 @@
 class Mode {
 
     // Modes. Ionian in Major is 3 Octaves, Aeolian in Minor. The rest are 2 octaves.
-	IONIAN		= {
+	static IONIAN		= {
 		name: "Ionian", 	
 		majorPos: 1, 
 		minorPos: 3, 
@@ -34,7 +34,7 @@ class Mode {
 					["one1", "fiv1", "fiv2"], ["one1", "thr2", "sev2"], ["thr1", "one2", "fiv2"], ["thr1", "fiv1", "one2"],
 					["fiv1", "one2", "thr2"], ["one2", "two2", "sev2"], ["one1", "two2", "sev2"], ["one1", "fiv1", "thr2", "sev2"] ]
 	};
-	DORIAN		= {
+	static DORIAN		= {
 		name: "Dorian", 	
 		majorPos: 2, 
 		minorPos: 4, 
@@ -70,11 +70,11 @@ class Mode {
 		]
 	};
 
-		LYDIAN		= {
-			name: "Lydian", 	
-			majorPos: 4, 
-			minorPos: 6, 
-			logic: [
+	static LYDIAN		= {
+		name: "Lydian", 	
+		majorPos: 4, 
+		minorPos: 6, 
+		logic: [
 			/* 00 one1 */	["two1", "thr1", "fiv1", "two2", "thr2"],
 			/* 01 two1 */	["fiv1", "sev1"],
 			/* 02 thr1 */	["for1", "fiv1", "sev1", "one1"],
@@ -104,7 +104,7 @@ class Mode {
 							["fiv1", "one2", "thr2"],
 							["one1", "fiv1", "thr2", "sev2"], ["one1", "six1", "sev1", "thr2"] ]};
 
-		MIXOLYDIAN	= {
+	static MIXOLYDIAN	= {
 			name: "Mixolydian", 
 			majorPos: 5, 
 			minorPos: 7, 
@@ -138,7 +138,7 @@ class Mode {
 							["thr1", "fiv1", "sev1", "two2"] ]};
 
 
-        AEOLIAN		= {
+    static AEOLIAN		= {
 			name: "Aeolian", 	
 			majorPos: 6, 
 			minorPos: 1, 
@@ -174,10 +174,10 @@ class Mode {
 				};
 
 				
-	DATABASE = [IONIAN, DORIAN, LYDIAN, MIXOLYDIAN, AEOLIAN];
-	index = 0;
-	current;
-	previous;
+	static DATABASE = [IONIAN, DORIAN, LYDIAN, MIXOLYDIAN, AEOLIAN];
+	static index = 0;
+	static current;
+	static previous;
 
 
 	change(modeIndex = -1){
