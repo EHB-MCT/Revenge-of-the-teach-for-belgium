@@ -11,12 +11,17 @@ class Intervals {
             let modeOffset;
             if(Key.current == "C Minor"){
                 modeOffset = Mode.DATABASE[Mode.index].minorPos;
-            } else modeOffset = Mode.DATABASE[Mode.index].majorPos;
+            } else {
+                modeOffset = Mode.DATABASE[Mode.index].majorPos;
+            } 
+        
+        this.loadout = new Map();
 
             for(let i = 0; i<=this.DATABASE.length - 1; i++){
                 this.loadout[this.DATABASE[i]] = Key.DATABASE[Key.index][i + modeOffset];
             }
-            
+         
+        this.updated = true;
         }
     }
 }
