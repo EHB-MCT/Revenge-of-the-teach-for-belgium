@@ -25,7 +25,9 @@ var Mode = /** @class */ (function () {
     Mode.init = function () {
         Mode.previous = Mode.current;
         Mode.current = Mode.DATABASE[Mode.index];
+        console.log(Mode.current);
         Intervals_1.Intervals.updated = false;
+        console.log("Intervals updated: " + Intervals_1.Intervals.updated);
         Intervals_1.Intervals.populate();
     };
     // Modes. Ionian in Major is 3 Octaves, Aeolian in Minor. The rest are 2 octaves.
@@ -129,7 +131,8 @@ var Mode = /** @class */ (function () {
         chords: [["one1", "thr1", "fiv1"], ["one1", "thr1", "sev1"], ["one1", "fiv1", "one2"], ["one1", "fiv1", "thr2"],
             ["one1", "fiv1", "fiv2"], ["one1", "thr2", "sev2"], ["thr1", "one2", "fiv2"], ["thr1", "fiv1", "one2"],
             ["fiv1", "one2", "thr2"],
-            ["one1", "fiv1", "thr2", "sev2"], ["one1", "six1", "sev1", "thr2"]]
+            ["one1", "fiv1", "thr2", "sev2"], ["one1", "six1", "sev1", "thr2"]
+        ]
     };
     Mode.MIXOLYDIAN = {
         name: "Mixolydian",
@@ -162,7 +165,8 @@ var Mode = /** @class */ (function () {
         ],
         chords: [["one1", "thr1", "sev1"], ["one1", "thr2", "sev2"], ["one1", "fiv1", "sev1"], ["one1", "thr2", "sev2"],
             ["thr1", "sev1", "fiv2"], ["fiv1", "sev1", "thr2"], ["one1", "fiv1", "thr2", "sev2"],
-            ["thr1", "fiv1", "sev1", "two2"]]
+            ["thr1", "fiv1", "sev1", "two2"]
+        ]
     };
     Mode.AEOLIAN = {
         name: "Aeolian",

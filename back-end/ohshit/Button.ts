@@ -17,12 +17,13 @@ export class Button {
 
     static sounds =     ["Small", "Octave", "Harmony", "Chord", "Transpose"];
     static weights =    [ 88.5  ,  3.5	 ,  3.5		,  2	 ,	2	 ,  0.5		  ]; 
+    static playsNote: boolean;
 
     public playNote(){
         this.generateNote();
     }
 
-    _play(options: Array<String>){
+    public _play(options: Array<String>){
 		
 		let noteName = this.noteAdjustments(options);
 
@@ -39,13 +40,7 @@ export class Button {
 
 	}
 
-
-
-
-
-
-
-    private generateNote(){
+    public generateNote(){
         
         let played: Boolean = false;
         let optionSets: Array<Array<String>>;
@@ -129,7 +124,8 @@ export class Button {
 
 
 function test(){
-    soundplayer.play("C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/C4.wav")
+	Note.lastAbsolute = 'C4';
+    soundplayer.play("C:/Users/pimto/Downloads/v1.0-win/notes/C4.wav")
 	Mode.index = Math.floor(Math.random() * 4);
 	Mode.init();
 }

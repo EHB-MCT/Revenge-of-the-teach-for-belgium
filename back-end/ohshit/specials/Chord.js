@@ -1,6 +1,7 @@
+import { Button } from "../Button";
 import { Mode } from "../music/Mode";
 
-class Chord extends Button {
+export class Chord extends Button {
 
     Chord(){
         
@@ -12,9 +13,9 @@ class Chord extends Button {
 
         super.onPress()
 
-        super.Mode.change();
+        Mode.change();
         playNote();
-        playChord();
+        super.playChord();
     }
 
     update(){

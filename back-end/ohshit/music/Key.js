@@ -10,7 +10,7 @@ var Key = /** @class */ (function () {
         while (newIndex == Key.index)
             newIndex = Math.random() * Key.DATABASE.length - 1;
         Key.index = newIndex;
-        Key.current = Key.DATABASE[Key.index]; //[0]
+        Key.current = Key.DATABASE[Key.index]; //Key.index
         Intervals_1.Intervals.updated = false;
         Intervals_1.Intervals.populate();
         Key.justChanged = true;

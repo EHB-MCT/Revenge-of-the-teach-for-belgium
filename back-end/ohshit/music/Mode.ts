@@ -42,6 +42,7 @@ export class Mode {
 					["one1", "fiv1", "fiv2"], ["one1", "thr2", "sev2"], ["thr1", "one2", "fiv2"], ["thr1", "fiv1", "one2"],
 					["fiv1", "one2", "thr2"], ["one2", "two2", "sev2"], ["one1", "two2", "sev2"], ["one1", "fiv1", "thr2", "sev2"] ]
 	};
+
 	static DORIAN: ModeDef = {
 		name: "Dorian", 	
 		majorPos: 2, 
@@ -110,7 +111,9 @@ export class Mode {
 			chords: [		["one1", "thr1", "fiv1"], ["one1", "thr1", "sev1"], ["one1", "fiv1", "one2"], ["one1", "fiv1", "thr2"],
 							["one1", "fiv1", "fiv2"], ["one1", "thr2", "sev2"], ["thr1", "one2", "fiv2"], ["thr1", "fiv1", "one2"],
 							["fiv1", "one2", "thr2"],
-							["one1", "fiv1", "thr2", "sev2"], ["one1", "six1", "sev1", "thr2"] ]};
+							["one1", "fiv1", "thr2", "sev2"], ["one1", "six1", "sev1", "thr2"] 
+						]
+	};
 
 	static MIXOLYDIAN: ModeDef = {
 			name: "Mixolydian", 
@@ -143,7 +146,11 @@ export class Mode {
 			],
 			chords: [		["one1", "thr1", "sev1"], ["one1", "thr2", "sev2"], ["one1", "fiv1", "sev1"], ["one1", "thr2", "sev2"],
 							["thr1", "sev1", "fiv2"], ["fiv1", "sev1", "thr2"], ["one1", "fiv1", "thr2", "sev2"],
-							["thr1", "fiv1", "sev1", "two2"] ]};
+							["thr1", "fiv1", "sev1", "two2"] 
+						
+						]
+					
+	};
 
 
     static AEOLIAN: ModeDef	 = {
@@ -179,7 +186,7 @@ export class Mode {
 							["one1", "fiv1", "fiv2"], ["one1", "thr2", "sev2"], ["thr1", "one2", "fiv2"], ["thr1", "fiv1", "one2"],
 							["fiv1", "one2", "thr2"], ["one1", "fiv1", "thr2", "sev2"] 
 					]
-				};
+	};
 
 				
 	public static DATABASE: Array<ModeDef> = [Mode.IONIAN, Mode.DORIAN, Mode.LYDIAN, Mode.MIXOLYDIAN, Mode.AEOLIAN];
@@ -208,7 +215,9 @@ export class Mode {
 	public static init(){
 		Mode.previous = Mode.current;
 		Mode.current = Mode.DATABASE[Mode.index];
+		console.log(Mode.current);
 		Intervals.updated = false;
+		console.log(`Intervals updated: ${Intervals.updated}`)
 		Intervals.populate();
 	}
 }

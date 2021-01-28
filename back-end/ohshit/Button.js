@@ -98,10 +98,9 @@ var Button = /** @class */ (function () {
 }());
 exports.Button = Button;
 function test() {
-    soundplayer.play("C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/C4.wav");
+    Note_js_1.Note.lastAbsolute = 'C4';
+    soundplayer.play("C:/Users/pimto/Downloads/v1.0-win/notes/C4.wav");
     Mode_js_1.Mode.index = Math.floor(Math.random() * 4);
-    console.log(Mode_js_1.Mode.index)
     Mode_js_1.Mode.init();
-    console.log(Mode_js_1.Mode.current)
 }
 test();
