@@ -29,7 +29,7 @@ export class Button {
 
         let sound;
 
-        sound = soundplayer.play(`C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/${noteName}.wav`);
+        sound = soundplayer.play(`C:/Users/pimto/Downloads/hf-january-master/january/assets/notes/${noteName}.wav`);
         console.log(noteName);
 
 	}
