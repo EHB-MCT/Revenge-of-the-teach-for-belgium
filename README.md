@@ -1,7 +1,18 @@
 # Dream Team Episode 3: Revenge of the Teach for Belgium
 
+This repository is the home of our team's ambitions for an interactive installation in the form of bits, bytes and mostly running code. Feel free to look around, take in the stress and tears, junk food and hours of morning commute to campus.
+
+Contributers:
+
+- Farah Amri
+- Ibrahim Burak Gozen
+- Nick Nijskens
+- Joke Van 't Veld
+- Pim Tournaye
+
+Special thanks to Sean Rosseel for the huge help through the weeks.
 ## Setup
-We don't have any Node packages but once we do next week, you can build and run the code like this. 
+To run our code, you need to be able to run a Node.js server
 
 
 ```
@@ -10,25 +21,28 @@ node index.js
 ```
 
 
-If you have some MIDI data or MusicXML files and want to make some NoteSequences to feed Magenta, edit the directory lines in test.py and run the file. (WIP)
-
-
 ## Technologieën in gebruik
-### Electronica: 
-- Arduino 
+### Electronics: 
+- Arduino Mega
+- [Firmata Protocol](https://github.com/firmata/arduino)
 - [Johnny Five](http://johnny-five.io/)
-- [Phillips Hue Node API](https://www.npmjs.com/package/node-hue-api)
+- [Socket.io](https://socket.io/)
+- [Phillips Hue](https://developers.meethue.com/)
 
 ### AI:          
-- [Magenta (PerformanceRNN, ImprovRNN)](https://magenta.tensorflow.org/)
-- Markov chain (progressions)
+- [Magenta (Piano Genie)](https://magenta.tensorflow.org/)
+- Markov chain (Generative algorithm applied to chord progressions, modes, keys and intervals)
 
 ### Back-end:    
-- Node.js
-- [Tone.js](https://tonejs.github.io/)
-- Some MIDI library we still need to look for. (Magenta also has capabilities, maybe WebMIDI API)
+- [Node.js](https://nodejs.org/en/)
+- Some MIDI library we still need to look for if we end up going for that.
+- [Typescript](https://www.typescriptlang.org/)
 
 
 ### Inspiration
 
+This project would not have existed without the wonderful work of Rich Vreeland, more specifically his tool called 'January'. Give it a try yourself, it's relaxing.
 [January by Rich Vreeland / Disasterpiece](https://github.com/richvreeland/hf-january)
+
+Check out his other work if you have the time, it's worth it.
+[Disasterpiece.com](https://disasterpeace.com/)
