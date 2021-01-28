@@ -12,6 +12,7 @@ var Intervals = /** @class */ (function () {
             console.log("updated is false");
             var modeOffset = void 0;
             console.log("Current key: " + Key_1.Key.current);
+            console.log("Current mode: " + Mode_1.Mode.DATABASE[Mode_1.Mode.index]);
             if (Key_1.Key.current == "C Minor") {
                 modeOffset = Mode_1.Mode.DATABASE[Mode_1.Mode.index].minorPos;
                 console.log("Minor position");
@@ -22,22 +23,12 @@ var Intervals = /** @class */ (function () {
             }
             Intervals.loadout = new Map();
             for (var i = 0; i <= Intervals.DATABASE.length - 1; i++) {
-                //console.log(Key.index[Number(i + modeOffset)])
                 var sparta = Key_1.Key.DATABASE[Math.floor(Math.random() * 2)];
                 var athena = sparta[i + modeOffset];
                 Intervals.loadout.set(Intervals.DATABASE[i], athena);
-                console.log("-----------");
-                console.log(Intervals.DATABASE[i]);
-                console.log("-----------");
-                console.log(Key_1.Key.index + i + "   this is sparta");
-                console.log("-----------");
-                console.log(Key_1.Key.DATABASE);
-                console.log("-----------");
-                console.log("This is " + sparta);
                 console.log(athena);
             }
             Intervals.updated = true;
-            console.log('test');
             console.log(Intervals.loadout);
         }
         else

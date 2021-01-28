@@ -125,7 +125,7 @@ export class Button {
 
 function test(){
 	Note.lastAbsolute = 'C4';
-    soundplayer.play("C:/Users/pimto/Downloads/v1.0-win/notes/C4.wav")
+    soundplayer.play("C:/Users/pimto/Downloads/hf-january-master/january/assets/notes/D3.wav")
 	Mode.index = Math.floor(Math.random() * 4);
 	Mode.init();
 }

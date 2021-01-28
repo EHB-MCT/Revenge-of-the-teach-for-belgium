@@ -14,6 +14,7 @@ export class Intervals {
             console.log("updated is false");
             let modeOffset: number;
             console.log(`Current key: ${Key.current}`)
+            console.log(`Current mode: ${Mode.DATABASE[Mode.index]}`)
             if (Key.current == "C Minor") {
                 modeOffset = Mode.DATABASE[Mode.index].minorPos;
                 console.log("Minor position")
@@ -23,25 +24,15 @@ export class Intervals {
             }
 
             Intervals.loadout = new Map();
-
             for (let i = 0; i <= Intervals.DATABASE.length - 1; i++) {
-                //console.log(Key.index[Number(i + modeOffset)])
                 let sparta = Key.DATABASE[Math.floor(Math.random() * 2)];
                 let athena = sparta[i + modeOffset];
                 Intervals.loadout.set(Intervals.DATABASE[i], athena);
-                console.log("-----------");
-                console.log(Intervals.DATABASE[i]);
-                console.log("-----------");
-                console.log(Key.index + i + "   this is sparta");
-                console.log("-----------");
-                console.log(Key.DATABASE);
-                console.log("-----------");
-                console.log(`This is ${sparta}`);
+                
                 console.log(athena);
             }
 
             Intervals.updated = true;
-            console.log('test');
             console.log(Intervals.loadout);
         }
         else return;

@@ -99,7 +99,7 @@ var Button = /** @class */ (function () {
 exports.Button = Button;
 function test() {
     Note_js_1.Note.lastAbsolute = 'C4';
-    soundplayer.play("C:/Users/pimto/Downloads/v1.0-win/notes/C4.wav");
+    soundplayer.play("C:/Users/pimto/Downloads/hf-january-master/january/assets/notes/D3.wav");
     Mode_js_1.Mode.index = Math.floor(Math.random() * 4);
     Mode_js_1.Mode.init();
 }
