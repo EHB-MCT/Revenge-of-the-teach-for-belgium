@@ -18,7 +18,7 @@ export class Key{
 			newIndex = Math.random() * Key.DATABASE.length - 1;
 		
 		Key.index = newIndex;
-		Key.current = Key.DATABASE[Key.index][0];
+		Key.current = Key.DATABASE[Key.index];//[0]
 		Intervals.updated = false;
 		Intervals.populate();
 

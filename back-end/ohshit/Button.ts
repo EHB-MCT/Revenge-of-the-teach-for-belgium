@@ -3,7 +3,7 @@ import {Key} from './music/Key.js';
 import {Note} from './music/Note.js';
 import {Mode} from './music/Mode.js';
 
-const player = require('play-sound');
+const soundplayer = require('sound-play');
 
 
 
@@ -28,7 +28,7 @@ export class Button {
 
         let sound;
 
-        sound = player.play(`C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/${noteName}.mp3`);
+        sound = soundplayer.play(`C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/${noteName}.wav`);
         console.log(noteName);
 
 	}
@@ -127,4 +127,12 @@ export class Button {
 		}	
 }
 
-let test = player.play(`C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/C4.mp3`);
+
+function test(){
+    soundplayer.play("C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/C4.wav")
+	Mode.index = Math.floor(Math.random() * 4);
+	Mode.init();
+}
+
+test();
+
