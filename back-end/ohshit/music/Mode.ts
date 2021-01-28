@@ -1,9 +1,15 @@
-const Intervals
-
-class Mode {
+import { Intervals } from "./Intervals";
+	interface ModeDef {
+		name: string,
+		majorPos: number,
+		minorPos: number,
+		logic: Array<Array<String>>,
+		chords: Array<Array<String>>
+	}
+export class Mode {
 
     // Modes. Ionian in Major is 3 Octaves, Aeolian in Minor. The rest are 2 octaves.
-	static IONIAN		= {
+	static IONIAN: ModeDef = {
 		name: "Ionian", 	
 		majorPos: 1, 
 		minorPos: 3, 
@@ -36,7 +42,7 @@ class Mode {
 					["one1", "fiv1", "fiv2"], ["one1", "thr2", "sev2"], ["thr1", "one2", "fiv2"], ["thr1", "fiv1", "one2"],
 					["fiv1", "one2", "thr2"], ["one2", "two2", "sev2"], ["one1", "two2", "sev2"], ["one1", "fiv1", "thr2", "sev2"] ]
 	};
-	static DORIAN		= {
+	static DORIAN: ModeDef = {
 		name: "Dorian", 	
 		majorPos: 2, 
 		minorPos: 4, 
@@ -72,7 +78,7 @@ class Mode {
 		]
 	};
 
-	static LYDIAN		= {
+	public static LYDIAN: ModeDef = {
 		name: "Lydian", 	
 		majorPos: 4, 
 		minorPos: 6, 
@@ -106,7 +112,7 @@ class Mode {
 							["fiv1", "one2", "thr2"],
 							["one1", "fiv1", "thr2", "sev2"], ["one1", "six1", "sev1", "thr2"] ]};
 
-	static MIXOLYDIAN	= {
+	static MIXOLYDIAN: ModeDef = {
 			name: "Mixolydian", 
 			majorPos: 5, 
 			minorPos: 7, 
@@ -140,7 +146,7 @@ class Mode {
 							["thr1", "fiv1", "sev1", "two2"] ]};
 
 
-    static AEOLIAN		= {
+    static AEOLIAN: ModeDef	 = {
 			name: "Aeolian", 	
 			majorPos: 6, 
 			minorPos: 1, 
