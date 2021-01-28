@@ -182,13 +182,13 @@ export class Mode {
 				};
 
 				
-	static DATABASE = [Mode.IONIAN, Mode.DORIAN, Mode.LYDIAN, Mode.MIXOLYDIAN, Mode.AEOLIAN];
-	static index = 0;
-	static current = {};
-	static previous = {};
+	public static DATABASE: Array<ModeDef> = [Mode.IONIAN, Mode.DORIAN, Mode.LYDIAN, Mode.MIXOLYDIAN, Mode.AEOLIAN];
+	public static index: number = 0;
+	public static current: ModeDef;
+	public static previous: ModeDef;
 
 
-	change(modeIndex = -1){
+	public change(modeIndex = -1){
 		if (modeIndex == -1){
 		
 			let newIndex = Math.floor(Math.random()* Mode.DATABASE.length - 1);
@@ -201,11 +201,11 @@ export class Mode {
 			}
 		} else {
 			Mode.index = modeIndex;
-			this.init();
+			Mode.init();
 		}
 	}
 
-	init(){
+	public static init(){
 		Mode.previous = Mode.current;
 		Mode.current = Mode.DATABASE[Mode.index];
 		Intervals.updated = false;

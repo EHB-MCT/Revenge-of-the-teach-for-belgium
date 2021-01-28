@@ -7,38 +7,38 @@ const player = require('play-sound');
 
 
 
-class Button {
-    
-    //Storing intervals
-	static i: Object = {};
+export class Button {
 	
 	public playsNote: Boolean = false;
 	public noteName: String = 'n/a';
 
-    static lastSoundtype: String;
+	public type: String = "";
+    private static lastSoundtype: String;
 
     static sounds =     ["Small", "Octave", "Harmony", "Chord", "Transpose"];
     static weights =    [ 88.5  ,  3.5	 ,  3.5		,  2	 ,	2	 ,  0.5		  ]; 
 
-
-    Button(){
-        
-    }
-
-    playNote(){
-        Button.i = Intervals.loadout;
+    public playNote(){
         this.generateNote();
     }
 
-    _play(options: any){
-        let randomNote = this.noteAdjustments(options);
+    _play(options: Array<String>){
+		
+		let noteName = this.noteAdjustments(options);
 
         let sound;
 
-        sound = player.play(randomNote);
-        console.log(randomNote);
+        sound = player.play(`C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/${noteName}.mp3`);
+        console.log(noteName);
 
-    }
+	}
+	
+	private playChord(){
+
+	//TODO
+
+	}
+
 
 
 
@@ -47,13 +47,13 @@ class Button {
 
     private generateNote(){
         
-        let played: Boolean;
+        let played: Boolean = false;
         let optionSets: Array<Array<String>>;
 
         optionSets = Mode.current.logic;
 
         for (let j = 0; j < Intervals.DATABASE.length - 1; j++) {
-            if (Note.lastRecorded == Button.i[Intervals.DATABASE[j]]){
+            if (Note.lastRecorded == Intervals.loadout.get(Intervals.DATABASE[j])){
                 this._play(optionSets[j]);
                 played = true;
             }
@@ -63,31 +63,30 @@ class Button {
     }
 
 
-    private noteAdjustments(options: Array<String>)
-		{
-			let note;
-			let random;
+    private noteAdjustments(options: Array<String>):String {
+			let note: any = "";
+			let random: number = 0;
 			
 			// NOTE PREVENTIONS
 			random = Math.random()* options.length - 1;
-			note = Button.i[options[random]];
+			note = Intervals.loadout.get(options[random]);
 			
 			// Halve Probability of Trills and Repeats
 			if (note == Note.secondToLastRecorded || note == Note.lastAbsolute)
 			{
 				random = Math.random()* options.length - 1;
-				note = Button.i[options[random]];
+				note = Intervals.loadout.get(options[random]);
 			}
 			
 			let g = 0;		
 			while (g < 100 && (note == null
 				|| (note == Note.lastHarmony && Button.lastSoundtype == "Harmony")
 				|| (note == Note.lastOctave && Button.lastSoundtype == "Octave")
-				//|| (type == "Octave" && (note == Button.i.for1 || note == Button.i.for2 || note == Button.i.for3)) 
+				//|| (type == "Octave" && (note == Intervals.loadout.get("for1") || note == Intervals.loadout.get("for2") || note == Intervals.loadout.get("for3")))
 				))
 			{
-				random = Math.random()* options.length - 1;
-				note = Button.i[options[random]];
+				random = Math.random() * options.length - 1;
+				note = Intervals.loadout.get(options[random]);
 				g++;
 			}				
 			
@@ -124,5 +123,8 @@ class Button {
 			
 	
 		} */
+		return note;
 		}	
 }
+
+let test = player.play(`C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/C4.mp3`);

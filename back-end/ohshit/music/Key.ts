@@ -7,7 +7,7 @@ export class Key{
 
     public static DATABASE: Array<any> = [Key.C_MAJOR, Key.C_MINOR];
     public static index: number = Math.floor(Math.random()* Key.DATABASE.length - 1);
-    public static current: String = Key.DATABASE[Key.index][0];
+    public static current: string = Key.DATABASE[Key.index][0];
     public static justChanged: Boolean;
 
     public static change(){

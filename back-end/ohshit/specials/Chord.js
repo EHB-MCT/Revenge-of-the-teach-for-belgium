@@ -1,4 +1,3 @@
-import * as Music from "../music"
 
 class Chord extends Button {
 
