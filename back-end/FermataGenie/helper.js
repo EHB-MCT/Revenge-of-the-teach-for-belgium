@@ -1,3 +1,6 @@
+const mvae = require('@magenta/music/node/music_vae');
+const core = require('@magenta/music/node/core');
+
 const CONSTANTS = {
     NUM_BUTTONS: 25,
     NOTES_PER_OCTAVE: 12,
@@ -8,7 +11,7 @@ const CONSTANTS = {
 
 class Player {
     constructor() {
-        this.player = new mm.SoundFontPlayer('https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus');
+        this.player = new core.mm.Player('https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus');
         this.midiOut = [];
         this.midiIn = []
         this.usingMidiOut = false;

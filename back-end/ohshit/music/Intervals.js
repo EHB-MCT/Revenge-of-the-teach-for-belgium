@@ -1,27 +1,41 @@
-class Intervals {
-
-    static DATABASE = ["one1", "two1", "thr1", "for1", "fiv1", "six1", "sev1", "one2", "two2", "thr2", "for2", "fiv2", "six2", "sev2", "one3", "two3", "thr3", "for3", "fiv3", "six3", "sev3", "one4"];
-
-    static updated = false;
-
-    static loadout = {};
-
-    populate(){
-        if (this.updated = false){
-            let modeOffset;
-            if(Key.current == "C Minor"){
-                modeOffset = Mode.DATABASE[Mode.index].minorPos;
-            } else {
-                modeOffset = Mode.DATABASE[Mode.index].majorPos;
-            } 
-        
-        this.loadout = new Map();
-
-            for(let i = 0; i<=this.DATABASE.length - 1; i++){
-                this.loadout[this.DATABASE[i]] = Key.DATABASE[Key.index][i + modeOffset];
-            }
-         
-        this.updated = true;
-        }
+"use strict";
+exports.__esModule = true;
+exports.Intervals = void 0;
+var Key_1 = require("./Key");
+var Mode_1 = require("./Mode");
+var Intervals = /** @class */ (function () {
+    function Intervals() {
     }
-}
+    Intervals.populate = function () {
+        console.log("populating");
+        if (Intervals.updated == false) {
+            console.log("updated is false");
+            var modeOffset = void 0;
+            console.log("Current key: " + Key_1.Key.current);
+            console.log("Current mode: " + Mode_1.Mode.DATABASE[Mode_1.Mode.index]);
+            if (Key_1.Key.current == "C Minor") {
+                modeOffset = Mode_1.Mode.DATABASE[Mode_1.Mode.index].minorPos;
+                console.log("Minor position");
+            }
+            else {
+                modeOffset = Mode_1.Mode.DATABASE[Mode_1.Mode.index].majorPos;
+                console.log("Major position");
+            }
+            Intervals.loadout = new Map();
+            for (var i = 0; i <= Intervals.DATABASE.length - 1; i++) {
+                var sparta = Key_1.Key.DATABASE[Math.floor(Math.random() * 2)];
+                var athena = sparta[i + modeOffset];
+                Intervals.loadout.set(Intervals.DATABASE[i], athena);
+                console.log(athena);
+            }
+            Intervals.updated = true;
+            console.log(Intervals.loadout);
+        }
+        else
+            return;
+    };
+    Intervals.DATABASE = ["one1", "two1", "thr1", "for1", "fiv1", "six1", "sev1", "one2", "two2", "thr2", "for2", "fiv2", "six2", "sev2", "one3", "two3", "thr3", "for3", "fiv3", "six3", "sev3", "one4"];
+    Intervals.updated = false;
+    return Intervals;
+}());
+exports.Intervals = Intervals;

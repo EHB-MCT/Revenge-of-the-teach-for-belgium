@@ -1,9 +1,10 @@
-import * as Music from "../music"
+import { Button } from "../Button";
+import { Mode } from "../music/Mode";
 
-class Chord extends Button {
+export class Chord extends Button {
 
     Chord(){
-        super();
+        
 
         //volume???
     }
@@ -14,7 +15,7 @@ class Chord extends Button {
 
         Mode.change();
         playNote();
-        playChord();
+        super.playChord();
     }
 
     update(){
