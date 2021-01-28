@@ -4,7 +4,7 @@ exports.Button = void 0;
 var Intervals_js_1 = require("./music/Intervals.js");
 var Note_js_1 = require("./music/Note.js");
 var Mode_js_1 = require("./music/Mode.js");
-var player = require('play-sound');
+var sound = require('sound-play');
 var Button = /** @class */ (function () {
     function Button() {
         this.playsNote = false;
@@ -17,7 +17,7 @@ var Button = /** @class */ (function () {
     Button.prototype._play = function (options) {
         var noteName = this.noteAdjustments(options);
         var sound;
-        sound = player.play("C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/" + noteName + ".mp3");
+        sound = player.play("C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/" + noteName + ".wav");
         console.log(noteName);
     };
     Button.prototype.playChord = function () {
@@ -98,11 +98,7 @@ var Button = /** @class */ (function () {
 }());
 exports.Button = Button;
 function test(){
-    player.play('foo.mp3', function(err){
-        if (err) throw err
-      });
-    //player.play("C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/C4.mp3", function(err){
-    
+    sound.play("C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/C4.wav")
 }
 
 test();
