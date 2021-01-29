@@ -25,6 +25,7 @@ app.use(cors());
 
 app.use("/api", playerRouter);
 
+// In de deze route wordt de user info gekregen uit de front-end omgezet in een local file
 playerRouter.route("/players")
     .post((req, res) => {
         rawData = req.body.userData;

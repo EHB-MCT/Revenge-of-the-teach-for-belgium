@@ -1,5 +1,6 @@
 'use strict';
 
+//algemene variabele
 let counter = 0;
 let userData = [];
 let totalUsers = 2;
@@ -10,6 +11,7 @@ let radioButtons;
 
 setTotalUserCount();
 
+// Haalt de total users waarde uit de input en stelt het gelijk aan de totalusers variabele 
 function setTotalUserCount() {
     radioButtons = [...document.getElementsByClassName("form-check-input")];
     radioButtons.forEach((button) => {
@@ -20,6 +22,7 @@ function setTotalUserCount() {
     });
 }
 
+//event listener die de juiste functie opent bij het drukken op next of back
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     if (counter == 0) {
@@ -35,6 +38,7 @@ form.addEventListener("submit", (event) => {
     }
 });
 
+// Deze functie opent de juiste functie om terug te gaan rekening houdend met de pagina waarop de gebruiker zich bevindt
 function goingBackSetup() {
     if (counter == 1) {
         form.innerHTML = getHtmlString.user;
@@ -49,6 +53,7 @@ function goingBackSetup() {
     }
 }
 
+// deze functie neemt alle persoonlijke informatie van alle gebruikers op en steekt het in een array
 function dataSaveOfUser() {
     let nextButton = document.getElementById("nextButtonUser");
     let nameInput = document.getElementById("namePlayer");
@@ -78,6 +83,7 @@ function dataSaveOfUser() {
     }
 }
 
+// De informatie van de gebruikers worden met een fetch naar de back-end verzonden
 async function apiCallDataOfUser() {
     console.log(userData);
     console.log("call to back end...");
@@ -94,6 +100,7 @@ async function apiCallDataOfUser() {
     return await request.json();
 }
 
+// dit is een object met de html string van de user info pagina's en total users count pagina's
 const getHtmlString = {
     count: `<div class="log-in-container">
     <h1 class="form-title" >Welcome, register person <span

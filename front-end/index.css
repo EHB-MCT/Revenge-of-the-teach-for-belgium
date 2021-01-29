@@ -2,11 +2,13 @@ html {
     font-family: neue-haas-grotesk-display, sans-serif;
 }
 
+/* De gradient is gedaan met behulp van https://cssgradient.io/ */
 
 .big-container {
     position: relative;
     background: rgb(131, 58, 180);
-    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 10%, rgba(253, 29, 29, 1) 48%, rgba(252, 176, 69, 1) 92%);
+    background: rgb(60, 117, 186);
+    background: linear-gradient(90deg, rgba(60, 117, 186, 1) 10%, rgba(145, 86, 157, 1) 30%, rgba(0, 165, 82, 1) 50%, rgba(253, 216, 34, 1) 70%, rgba(231, 59, 63, 1) 90%);
     height: 100vh;
     background-size: 600% 600%;
 
@@ -94,6 +96,7 @@ html {
 
 
 /* Animating background */
+/* Deze code is gebruikt aan de hand van de volgende website https://www.gradient-animator.com/ */
 
 @-webkit-keyframes AnimationName {
     0% {
