@@ -33,13 +33,11 @@ playerRouter.route("/players")
         rawData.forEach(object => {
             playerData.push(object);
         });
-        fs.writeFile("currentPlayers.json", JSON.stringify(playerData), 'utf8', (err) => {
-            if (err) throw err;
-            console.log("file is created");
-        })
-
-        console.log(playerData);
-        res.send(`the data received: ${playerData}`);
+        /*
+                fs.writeFile("currentPlayers.json", JSON.stringify(playerData), 'utf8', err => {
+                    console.log("file is created");
+                });
+                res.redirect('../front-end/manual.html');*/
     });
 
 

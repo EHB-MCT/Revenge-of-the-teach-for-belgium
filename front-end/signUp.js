@@ -4,6 +4,7 @@
 let counter = 0;
 let userData = [];
 let totalUsers = 2;
+let formSubmit = false;
 let backButton;
 let userForm;
 let form = document.getElementById("userForm");
@@ -25,7 +26,11 @@ function setTotalUserCount() {
 //event listener die de juiste functie opent bij het drukken op next of back
 form.addEventListener("submit", (event) => {
     event.preventDefault();
-    if (counter == 0) {
+    if (formSubmit) {
+        form.innerHTML = getHtmlString.start;
+        form.classList = "form-container";
+        document.getElementById("big-container").style.height = "100vh";
+    } else if (counter == 0) {
         form.innerHTML = getHtmlString.count;
         backButton = document.getElementById("backButtonUser");
         backButton.addEventListener("click", (event) => {
@@ -70,6 +75,7 @@ function dataSaveOfUser() {
     if (counter >= totalUsers) {
         form.innerHTML = "";
         apiCallDataOfUser();
+        startSimulation();
     } else {
         nameInput.value = ""
         emailInput.value = "";
@@ -98,6 +104,13 @@ async function apiCallDataOfUser() {
     });
 
     return await request.json();
+}
+
+function startSimulation() {
+    form.innerHTML = getHtmlString.manual;
+    form.classList = "form-container form-container-manual";
+    document.getElementById("big-container").style.height = "160vh";
+    formSubmit = true;
 }
 
 // dit is een object met de html string van de user info pagina's en total users count pagina's
@@ -149,5 +162,17 @@ const getHtmlString = {
     <div class="form-button-container">
         <button id="nextButtonUser" type="submit" class="btn btn-primary form-next-button">Next</button>
     </div>
+    </div>`,
+
+    manual: `<div class="log-in-container">
+    <h1 class="form-title">Before you can start read the manual first.</h1>
+    <img src="manual copy.svg" alt="">
+    <div class="form-button-container-manual">
+        <button id="nextButtonUser" type="submit" class="btn btn-primary form-next-button">Start</button>
+    </div>
+    </div>`,
+
+    start: `<div class="log-in-container">
+    <h1 class="form-title">Have fun!</h1>
     </div>`
 };

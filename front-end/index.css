@@ -9,6 +9,7 @@ html {
     background: rgb(131, 58, 180);
     background: rgb(60, 117, 186);
     background: linear-gradient(90deg, rgba(60, 117, 186, 1) 10%, rgba(145, 86, 157, 1) 30%, rgba(0, 165, 82, 1) 50%, rgba(253, 216, 34, 1) 70%, rgba(231, 59, 63, 1) 90%);
+    /* height: 160vh; */
     height: 100vh;
     background-size: 600% 600%;
 
@@ -17,7 +18,9 @@ html {
     animation: AnimationName 30s ease infinite;
 }
 
-
+.big-container-manual{
+    height: 160vh;
+}
 
 .log-in-container {
     position: relative;
@@ -40,10 +43,21 @@ html {
     width: 50%;
 }
 
+.form-container-manual {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+}
+
 .form-button-container {
     position: absolute;
     right: 5%;
     bottom: 10%;
+    text-align: right;
+}
+
+.form-button-container-manual {
+    display: block;
     text-align: right;
 }
 
