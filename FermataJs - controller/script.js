@@ -3,6 +3,8 @@ import {
     constants
 } from './app.js';
 
+import * as generateCircles from "./uiAnimations/generateCircles.js"
+
 const mapping_8 = {
     0: 0,
     1: 1,
@@ -42,12 +44,12 @@ function initKeyWhitelist() {
     const totalWhiteNotes = constants.white_notes_per_octave * octaves * octaves + (bonusNotes - 1);
 
     keyWhitelist = Array(totalNotes).fill().map((x, i) => {
-        if (octaves > 6){
+        if (octaves > 6) {
             return i;
-        } 
+        }
         // Starting 3 semitones up on small screens (on a C), and a whole octave up.
         return i + 3 + constants.notes_per_octave;
-    }); 
+    });
 }
 
 function initEverything() {
@@ -123,6 +125,7 @@ function onKeyDown(event) {
         const button = getButtonFromKeyCode(event.key);
         if (button !== null) {
             buttonDown(button, true);
+            generateCircles.generate();
         }
     }
 }

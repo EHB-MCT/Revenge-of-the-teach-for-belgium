@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <script src="app.js" type="module" defer></script>
     <script src="script.js" type="module" defer></script>
 </head>
+
 <body>
+    <canvas id="canvas" style="text-align: center;"></canvas>
     <h1>Hello Genie!</h1>
     <div class="controls" id="controls">
         <button class="color color-0" id="btn0" data-id="0"><span>1</span></button>
@@ -19,7 +22,10 @@
         <button class="color color-5" id="btn5" data-id="5"><span>6</span></button>
         <button class="color color-6" id="btn6" data-id="6"><span>7</span></button>
         <button class="color color-7" id="btn7" data-id="7"><span>8</span></button>
-      </div>
     </div>
+
+    <script src="https://code.createjs.com/1.0.0/tweenjs.min.js"></script>
+    <script type="module" src="./uiAnimations/generateCircles.js"></script>
 </body>
+
 </html>
