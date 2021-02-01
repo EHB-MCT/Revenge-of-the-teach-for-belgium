@@ -1,16 +1,28 @@
 'use strict';
 // Declaratie van Arduino bord en inputs/outputs
-let five = require("johnny-five"),
-board, buttonR, buttonB, buttonY, buttonG, buttonP, buttonReset, buttonRave, breadOne;
+//let five = require("johnny-five"),
+//board, buttonR, buttonB, buttonY, buttonG, buttonP, buttonReset, buttonRave, breadOne;
 
 const fetch = require("node-fetch");
 
-const host = "http://192.168.1.115"; // IP adres Philips Hue bridge
+const host = "http://192.168.1.119"; // IP adres Philips Hue bridge
 const username = "5Jgaedon0HXLnePLPgxWILxb42n5mcf08TRCsua7"; // Account ID op Philips Hue bridge
 const lampID = 3; // ID van de lamp die we willen besturen
 const url = `${host}/api/${username}/lights/${lampID}/state`; // url om naar te fetchen om het licht aan te passen
 
-// variabelen voor dimmen van het licht
+
+fetch(url,{
+  method: 'PUT',
+  body: JSON.stringify({
+    "on": true,
+    "xy": [
+      0.3321,
+      0.3605
+    ],
+    })
+}).then(console.log('yay'));
+
+/* // variabelen voor dimmen van het licht
 let lightBriMin = 51;
 let timer = 3000;
 
@@ -214,3 +226,4 @@ board.on("ready", async function(){
     }
   })
 });
+ */
