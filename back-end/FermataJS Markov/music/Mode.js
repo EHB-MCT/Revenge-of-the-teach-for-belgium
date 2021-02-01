@@ -5,15 +5,18 @@ var Intervals_1 = require("./Intervals");
 var Mode = /** @class */ (function () {
     function Mode() {
     }
+    Mode.change = function () {
+        throw new Error("Method not implemented.");
+    };
     Mode.prototype.change = function (modeIndex) {
         if (modeIndex === void 0) { modeIndex = -1; }
         if (modeIndex == -1) {
-            var newIndex = Math.floor(Math.random() * Mode.DATABASE.length - 1);
+            var newIndex = Math.floor(Math.random() * Mode.DATABASE.length);
             // Halve Probability of Mixolydian
             if (newIndex == 3)
-                newIndex = Math.floor(Math.random() * Mode.DATABASE.length - 1);
+                newIndex = Math.floor(Math.random() * Mode.DATABASE.length);
             while (newIndex == Mode.index) {
-                newIndex = Math.floor(Math.random() * Mode.DATABASE.length - 1);
+                newIndex = Math.floor(Math.random() * Mode.DATABASE.length);
                 Mode.index = newIndex;
             }
         }

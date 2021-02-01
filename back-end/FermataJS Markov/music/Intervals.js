@@ -12,7 +12,7 @@ var Intervals = /** @class */ (function () {
             console.log("updated is false");
             var modeOffset = void 0;
             console.log("Current key: " + Key_1.Key.current);
-            console.log("Current mode: " + Mode_1.Mode.DATABASE[Mode_1.Mode.index]);
+            console.log("Current mode: " + Mode_1.Mode.DATABASE[Mode_1.Mode.index].name);
             if (Key_1.Key.current == "C Minor") {
                 modeOffset = Mode_1.Mode.DATABASE[Mode_1.Mode.index].minorPos;
                 console.log("Minor position");

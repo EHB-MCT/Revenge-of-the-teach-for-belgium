@@ -7,6 +7,9 @@ import { Intervals } from "./Intervals";
 		chords: Array<Array<String>>
 	}
 export class Mode {
+    static change() {
+        throw new Error("Method not implemented.");
+    }
 
     // Modes. Ionian in Major is 3 Octaves, Aeolian in Minor. The rest are 2 octaves.
 	static IONIAN: ModeDef = {
@@ -198,12 +201,12 @@ export class Mode {
 	public change(modeIndex = -1){
 		if (modeIndex == -1){
 		
-			let newIndex = Math.floor(Math.random()* Mode.DATABASE.length - 1);
+			let newIndex = Math.floor(Math.random()* Mode.DATABASE.length);
 
 			// Halve Probability of Mixolydian
-			if (newIndex == 3) newIndex = Math.floor(Math.random()* Mode.DATABASE.length - 1);
+			if (newIndex == 3) newIndex = Math.floor(Math.random()* Mode.DATABASE.length);
 			while (newIndex == Mode.index){
-				newIndex = Math.floor(Math.random()* Mode.DATABASE.length - 1);
+				newIndex = Math.floor(Math.random()* Mode.DATABASE.length);
 				Mode.index = newIndex;
 			}
 		} else {

@@ -3,23 +3,22 @@ import { Mode } from "../music/Mode";
 
 export class Chord extends Button {
 
+
     Chord(){
         
 
         //volume???
     }
 
-    onPress(){
+    public static onPress(){
 
-        super.onPress()
 
         Mode.change();
-        playNote();
-        super.playChord();
+        //Button.playNote();
+        //Button.playChord();
     }
 
     update(){
-        super.update();
-        play("default");
+        //super.update();
     }
 }

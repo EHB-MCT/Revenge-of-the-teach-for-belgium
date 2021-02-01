@@ -14,7 +14,7 @@ export class Intervals {
             console.log("updated is false");
             let modeOffset: number;
             console.log(`Current key: ${Key.current}`)
-            console.log(`Current mode: ${Mode.DATABASE[Mode.index]}`)
+            console.log(`Current mode: ${Mode.DATABASE[Mode.index].name}`)
             if (Key.current == "C Minor") {
                 modeOffset = Mode.DATABASE[Mode.index].minorPos;
                 console.log("Minor position")

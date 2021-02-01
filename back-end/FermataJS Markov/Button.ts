@@ -2,12 +2,15 @@ import {Intervals} from './music/Intervals.js';
 import {Key} from './music/Key.js';
 import {Note} from './music/Note.js';
 import {Mode} from './music/Mode.js';
+import { Small } from './specials/Small.js';
 
-const soundplayer = require('sound-play');
+export const soundplayer = require('sound-play');
+export const soundfilesPath = 'C:/Users/pimto/Downloads/hf-january-master/january/assets/notes/';
 
 
 
 export class Button {
+    
 	
 	public playsNote: Boolean = false;
 	public noteName: String = 'n/a';
@@ -20,27 +23,40 @@ export class Button {
     static playsNote: boolean;
 
     public playNote(){
-        this.generateNote();
+        Button.generateNote();
     }
 
-    public _play(options: Array<String>){
+    public static _play(options: Array<String>){
 		
-		let noteName = this.noteAdjustments(options);
+		let noteName = Button.noteAdjustments(options);
 
-        let sound;
-
-        sound = soundplayer.play(`C:/Users/pimto/Downloads/hf-january-master/january/assets/notes/${noteName}.wav`);
+        soundplayer.play(`${soundfilesPath}${noteName}.wav`);
         console.log(noteName);
 
 	}
 	
-	private playChord(){
+	public playChord(){
+		let chordTones: Array<String> = Mode.current.chords[Math.floor(Math.random() * Mode.current.chords.length)];
+		console.log(`These are the chord tones: ${chordTones}`)
+
+		soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[0])}.wav`);
+		soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[1])}.wav`);
+		soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[2])}.wav`);
+
+		// If the chord is a seventh chord, push the 4th chord tone.
+
+		if (chordTones.length > 3 && Intervals.loadout.get(chordTones[3]) != null) {
+
+			soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[3])}.wav`);
+		}
+			
+
 
 	//TODO
 
 	}
 
-    public generateNote(){
+    public static generateNote(){
         
         let played: Boolean = false;
         let optionSets: Array<Array<String>>;
@@ -57,8 +73,8 @@ export class Button {
         if (played = false) this._play(optionSets[22]); //edge case 
     }
 
-
-    private noteAdjustments(options: Array<String>):String {
+	//Edge cases and preventing chromatism hell
+    private static noteAdjustments(options: Array<String>):String {
 			let note: any = "";
 			let random: number = 0;
 			
@@ -86,7 +102,7 @@ export class Button {
 			}				
 			
 			// Prevent certain tensions from triggering on record mode key changes
-		/* if (Key.justChanged && Mode.current != Mode.MIXOLYDIAN
+		 if (Key.justChanged && Mode.current != Mode.MIXOLYDIAN
 			&& (note == Intervals.loadout.get("two1") ||
 				note == Intervals.loadout.get("for1") ||
 				note == Intervals.loadout.get("six1") ||
@@ -95,7 +111,7 @@ export class Button {
 				note == Intervals.loadout.get("for3") ||
 				note == Intervals.loadout.get("six3")) ) {
 
-			for (desc in Intervals.loadout.keys()) {
+			for (let desc in Intervals.loadout.keys()) {
 
 				if (note == Intervals.loadout.get(desc)) {
 
@@ -104,30 +120,31 @@ export class Button {
 						if (Intervals.loadout.get(desc) == Intervals.DATABASE[j]) {
 
 							// change new note to be +/- 1 interval if the key just changed.
-							note = Intervals.loadout.get(Intervals.DATABASE[j + FlxG.random.sign()]);
+							note = Intervals.loadout.get(Intervals.DATABASE[j + Math.random() < 0.5 ? -1 : 1]);
 							break;
 						}
 					}
 				}
 			}
 				
-				Key.justChanged = false;
-			}
+			Key.justChanged = false;
+		}
 		
-			return note;
+		return note;
 			
 	
-		} */
-		return note;
+		
 		}	
 }
 
 
 function test(){
 	Note.lastAbsolute = 'C4';
-    soundplayer.play("C:/Users/pimto/Downloads/hf-january-master/january/assets/notes/D3.wav")
+    soundplayer.play(`${soundfilesPath}D3.wav`)
+    soundplayer.play(`${soundfilesPath}B3.wav`)
 	Mode.index = Math.floor(Math.random() * 4);
 	Mode.init();
+
 }
 
 test();

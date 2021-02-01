@@ -10,7 +10,9 @@ Contributers:
 - Joke Van 't Veld
 - Pim Tournaye
 
-Special thanks to Sean Rosseel for the huge help through the weeks.
+Special thanks to Sean Rosseel for the huge help throughout the weeks.
+
+[Link to GitHub Repository](https://github.com/EHB-MCT/Revenge-of-the-teach-for-belgium)
 ## Setup
 To run our code, you need to be able to run a Node.js server
 
@@ -42,7 +44,8 @@ node index.js
 ### Inspiration
 
 This project would not have existed without the wonderful work of Rich Vreeland, more specifically his tool called 'January'. Give it a try yourself, it's relaxing.
-[January by Rich Vreeland / Disasterpiece](https://github.com/richvreeland/hf-january)
+[January by Rich Vreeland / Disasterpiece](https://disasterpeace.com/blog/january/january)
+[Link to the most recent source](https://github.com/richvreeland/hf-january)
 
 Check out his other work if you have the time, it's worth it.
 [Disasterpiece.com](https://disasterpeace.com/)

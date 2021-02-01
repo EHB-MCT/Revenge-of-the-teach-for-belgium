@@ -4,12 +4,12 @@ export class Small extends Button {
 
     public new(){
 
-       super.playsNote = true;
+      // super.playsNote = true;
     }
 
-    public onPress(){
+    public static onPress(){
         //DRUK HIER MET ARDUINO EVENT OFZO
 
-        super.playNote();
+        //Button.playNote();
     }
 }

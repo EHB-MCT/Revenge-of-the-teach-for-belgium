@@ -6,7 +6,7 @@ export class Key{
     static C_MINOR: Array<string> = [ "C Minor",  "C1", "D1", "Ds1", "F1", "G1", "Gs1", "As1", "C2", "D2", "Ds2", "F2", "G2", "Gs2", "As2", "C3", "D3", "Ds3", "F3", "G3", "Gs3", "As3", "C4", "D4", "Ds4", "F4", "G4", "Gs4", "As4"];
 
     public static DATABASE: Array<any> = [Key.C_MAJOR, Key.C_MINOR];
-    public static index: number = Math.floor(Math.random()* Key.DATABASE.length - 1);
+    public static index: number = Math.floor(Math.random()* Key.DATABASE.length);
     public static current: string = Key.DATABASE[Key.index];
 	public static justChanged: Boolean;
 
