@@ -1,3 +1,5 @@
+let RGBconverter = require('@q42philips/hue-color-converter')
+
 let green = 50;
 let blue = 50;
 let red = 50;
@@ -5,9 +7,6 @@ let red = 50;
 let timer = 30000;
 
 class Button{
-    constructor(){
-    }
-
     addValues(){
         green += greenValue;
         blue += blueValue;
@@ -54,13 +53,13 @@ class WhiteButton extends Button{
     }
 }
 
-let blueButton = new BlueButton();
 
-if(blueButton == onDown) blueButton.addValues();
+
+//if(blueButton == onDown) blueButton.addValues();
 
 
 
 
 setInterval(event => {
- event.pushRGBtoHue(red,green,blue);
+    event.RGBconverter(red,green,blue);
 }, timer);
