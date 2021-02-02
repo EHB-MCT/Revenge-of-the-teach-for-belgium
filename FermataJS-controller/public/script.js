@@ -3,8 +3,6 @@ import {
     constants
 } from './app.js';
 
-//import * as generateCircles from "../uiAnimations/generateCircles.js";
-
 // Make connection
 let socket = io.connect('http://localhost:5000', {
     transports: ['websocket'],
@@ -21,11 +19,41 @@ const mapping_8 = {
     6: 6,
     7: 7
 };
-const buttons_device = ['a', 's', 'd', 'f', 'j', 'k', 'l', ';'];
+
+const MAPPING_25 = {
+    0: 0,
+    1: 1,
+    2: 2,
+    3: 3,
+    4: 4,
+    5: 5,
+    6: 6,
+    7: 7,
+    8: 8,
+    9: 9,
+    10: 10,
+    11: 11,
+    12: 12,
+    13: 13,
+    14: 14,
+    15: 15,
+    16: 16,
+    17: 17,
+    18: 18,
+    19: 19,
+    20: 20,
+    21: 21,
+    22: 22,
+    23: 23,
+    24: 24
+}
+const buttons_device = ['a', 's', 'd', 'f', 'j', 'k', 'l', ';', 'z', 'e', '§', '!', 't', 'y', 'u', 'i', "o", "p", "q", "w",' x', 'c', 'v', '&', '$'];
+
+import {PianoGenie} from '/FermataJS-controller/services/PianoGenie.js';
 
 let octaves = 7;
-let num_buttons = 8;
-let button_mapping = mapping_8;
+let num_buttons = 25;
+let button_mapping = MAPPING_25;
 
 let keyWhitelist;
 let temperature = 0.25;
@@ -35,8 +63,7 @@ let sustaining = false;
 let sustainingNotes = [];
 
 const player = new Player();
-const genie = new mm.PianoGenie(constants.genie_checkpoint);
-
+const genie = new PianoGenie(constants.genie_checkpoint);
 
 const listener = (data) => {
     console.log(data);

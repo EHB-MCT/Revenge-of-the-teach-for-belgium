@@ -1,5 +1,5 @@
 export const constants = {
-    num_buttons: 8,
+    num_buttons: 25,
     notes_per_octave: 12,
     white_notes_per_octave: 7,
     lowest_note: 21,
