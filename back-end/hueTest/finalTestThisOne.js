@@ -51,6 +51,9 @@ board.on('ready', function(){
           id: 'green1',
           value: 4
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
 
@@ -75,6 +78,9 @@ board.on('ready', function(){
           id: 'yellow1',
           value: 5
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
 
@@ -99,26 +105,37 @@ board.on('ready', function(){
           id: 'blue1',
           value: 6
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
 
     // Rode button 10 - 11
     var redB1 = new five.Button(10);
     var redL1 = new five.Led(11);
+    var red1on = true;
 
     redL1.on();
     redB1.on("down", function() {
-      redL1.off();
-      setTimeout(function(){
-        redL1.on();
-      }, cooldown);
-      green -= 7;
-      red += 20;
-      blue -= 7;
-      io.sockets.emit('inputChange', {
-        id: 'red1',
-        value: 7
-      });
+      if(red1on){
+        red1on = false;
+        redL1.off();
+        setTimeout(function(){
+          redL1.on();
+          red1on = true;
+        }, cooldown);
+        green -= 7;
+        red += 20;
+        blue -= 7;
+        io.sockets.emit('inputChange', {
+          id: 'red1',
+          value: 7
+        });
+        // Hier kunnen extra functies
+  
+        //
+      }
     });
 
     // Witte button 12 - 13
@@ -142,6 +159,9 @@ board.on('ready', function(){
           id: 'white1',
           value: 8
         });
+        // Hier kunnen extra functies
+  
+        //
       }
 
     });
@@ -167,6 +187,9 @@ board.on('ready', function(){
           id: 'green2',
           value: 9
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
 
@@ -191,6 +214,9 @@ board.on('ready', function(){
           id: 'yellow2',
           value: 10
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
     // Blauwe button 26 - 27
@@ -214,6 +240,9 @@ board.on('ready', function(){
           id: 'blue2',
           value: 11
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
 
@@ -238,6 +267,9 @@ board.on('ready', function(){
           id: 'red2',
           value: 12
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
 
@@ -262,6 +294,9 @@ board.on('ready', function(){
           id: 'white2',
           value: 13
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
 
@@ -286,6 +321,9 @@ board.on('ready', function(){
           id: 'green3',
           value: 14
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
 
@@ -310,6 +348,9 @@ board.on('ready', function(){
           id: 'yellow3',
           value: 15
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
 
@@ -334,6 +375,9 @@ board.on('ready', function(){
           id: 'blue3',
           value: 16
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
 
@@ -358,6 +402,9 @@ board.on('ready', function(){
           id: 'red3',
           value: 17
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
 
@@ -382,6 +429,9 @@ board.on('ready', function(){
           id: 'white3',
           value: 18
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
 
@@ -406,6 +456,9 @@ board.on('ready', function(){
           id: 'green4',
           value: 19
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
     // Gele button 44 - 45
@@ -429,6 +482,9 @@ board.on('ready', function(){
           id: 'yellow4',
           value: 20
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
     // Blauwe button 46 - 47
@@ -452,6 +508,9 @@ board.on('ready', function(){
           id: 'blue4',
           value: 21
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
     // Rode button 48 - 49
@@ -475,6 +534,9 @@ board.on('ready', function(){
           id: 'red4',
           value: 22
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
     // Witte button 50 - 51
@@ -498,6 +560,9 @@ board.on('ready', function(){
           id: 'white4',
           value: 23
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
     // Witte button 52 - 53
@@ -521,6 +586,9 @@ board.on('ready', function(){
           id: 'white5',
           value: 24
         });
+        // Hier kunnen extra functies
+  
+        //
       }
     });
     // Mapping gedaan

@@ -14,8 +14,8 @@ export class Chord extends Button {
 
 
         Mode.change();
-        //Button.playNote();
-        //Button.playChord();
+        Button.playNote();
+        Button.playChord();
     }
 
     update(){

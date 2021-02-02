@@ -25,7 +25,7 @@ var Small = /** @class */ (function (_super) {
     };
     Small.onPress = function () {
         //DRUK HIER MET ARDUINO EVENT OFZO
-        //Button.playNote();
+        Button_1.Button.playNote();
     };
     return Small;
 }(Button_1.Button));
