@@ -78,14 +78,6 @@ const listener = (data) => {
     player.playNoteDown(pitch, data.value);
 };
 
-//ARDUINO BUTTON
-socket.off('inputChange', listener);
-socket.on('inputChange', listener);
-socket.on('disconnect', () => {
-    console.log('Disconnect');
-    socket = null;
-});
-
 initEverything();
 
 function initKeyWhitelist() {
@@ -117,6 +109,14 @@ console.log(player);
 function showMainScreen() {
     document.addEventListener('keydown', onKeyDown); //toetsenbord
     document.addEventListener('keyup', onKeyUp);
+
+    //ARDUINO BUTTON
+    socket.off('inputChange', listener);
+    socket.on('inputChange', listener);
+    socket.on('disconnect', () => {
+        console.log('Disconnect');
+        socket = null;
+    });
 
     genie.resetState();
 }
