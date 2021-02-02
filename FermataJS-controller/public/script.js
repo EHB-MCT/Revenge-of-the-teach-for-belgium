@@ -3,6 +3,10 @@ import {
     constants
 } from './app.js';
 
+import {
+    PianoGenie
+} from './PianoGenie.js';
+
 // Make connection
 let socket = io.connect('http://localhost:5000', {
     transports: ['websocket'],
@@ -46,10 +50,9 @@ const MAPPING_25 = {
     22: 22,
     23: 23,
     24: 24
-}
-const buttons_device = ['a', 's', 'd', 'f', 'j', 'k', 'l', ';', 'z', 'e', '§', '!', 't', 'y', 'u', 'i', "o", "p", "q", "w",' x', 'c', 'v', '&', '$'];
+};
 
-import {PianoGenie} from '/FermataJS-controller/services/PianoGenie.js';
+const buttons_device = ['a', 's', 'd', 'f', 'j', 'k', 'l', ';', 'z', 'e', '§', '!', 't', 'y', 'u', 'i', "o", "p", "q", "w", ' x', 'c', 'v', '&', '$'];
 
 let octaves = 7;
 let num_buttons = 25;
@@ -67,26 +70,12 @@ const genie = new PianoGenie(constants.genie_checkpoint);
 
 const listener = (data) => {
     console.log(data);
-    switch (data.button) {
-        case "down": {
-            console.log(data.button);
-            const note = genie.nextFromKeyWhitelist(0, keyWhitelist, temperature); //eerste variabele moet veranderen
-            const pitch = constants.lowest_note + note;
 
-            // Hear it.
-            player.playNoteDown(pitch, 0);
-            break;
-        }
-        case "up": {
-            console.log(data.button);
-            const note = genie.nextFromKeyWhitelist(7, keyWhitelist, temperature); //eerste variabele moet veranderen
-            const pitch = constants.lowest_note + note;
+    const note = genie.nextFromKeyWhitelist(data.value, keyWhitelist, temperature); //eerste variabele moet veranderen
+    const pitch = constants.lowest_note + note;
 
-            // Hear it.
-            player.playNoteDown(pitch, 7);
-            break;
-        }
-    } 
+    // Hear it.
+    player.playNoteDown(pitch, data.value);
 };
 
 //ARDUINO BUTTON

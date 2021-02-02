@@ -2,15 +2,15 @@
 const CHECKPOINTS_DIR = 'https://storage.googleapis.com/magentadata/js/checkpoints';
 const GENIE_CHECKPOINT = `${CHECKPOINTS_DIR}/piano_genie/model/epiano/stp_iq_auto_contour_dt_166006`;
 
-const PianoGenie = require("FermataJS-controller\services\PianoGenie.js")
+const PianoGenie = require("FermataJS-controller\services\PianoGenie.js");
 
 let genieReady = false;
-let genie = new PianoGenie(GENIE_CHECKPOINT)
+let genie = new PianoGenie(GENIE_CHECKPOINT);
 
 genie.initialize().then(() => {
   genieReady = true;
-  process.send({genieReady: true})
-})
+  process.send({genieReady: true});
+});
 
 process.on('message', (msg) => {
   if (genieReady) {
