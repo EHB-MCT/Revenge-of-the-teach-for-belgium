@@ -19,23 +19,28 @@ export class Button {
     private static lastSoundtype: String;
 
     static sounds =     ["Small", "Octave", "Harmony", "Chord", "Transpose"];
-    static weights =    [ 88.5  ,  3.5	 ,  3.5		,  2	 ,	2	 ,  0.5		  ]; 
+    static weights =    [ 88.5  ,  3.5	 ,  3.5		,  2	 ,  0.5]; 
     static playsNote: boolean;
 
-    public playNote(){
-        Button.generateNote();
+    public static playNote(){
+		Button.generateNote();
+
     }
 
-    public static _play(options: Array<String>){
-		
+    public static play(options: Array<String>){
+
+		console.log(Button.noteAdjustments(options));
 		let noteName = Button.noteAdjustments(options);
 
-        soundplayer.play(`${soundfilesPath}${noteName}.wav`);
-        console.log(noteName);
+
+		soundplayer.play(`${soundfilesPath}${noteName}.wav`);
+		console.log(`${soundfilesPath} playing ${noteName}`)
+		console.log(noteName);
+
 
 	}
 	
-	public playChord(){
+	public static playChord(){
 		let chordTones: Array<String> = Mode.current.chords[Math.floor(Math.random() * Mode.current.chords.length)];
 		console.log(`These are the chord tones: ${chordTones}`)
 
@@ -57,34 +62,45 @@ export class Button {
 	}
 
     public static generateNote(){
-        
+
+        console.log('starting GenerateNote')
         let played: Boolean = false;
         let optionSets: Array<Array<String>>;
 
-        optionSets = Mode.current.logic;
+		optionSets = Mode.current.logic;
+		console.log(optionSets)
 
-        for (let j = 0; j < Intervals.DATABASE.length - 1; j++) {
+        for (let j = 0; j < Intervals.DATABASE.length; j++) {
             if (Note.lastRecorded == Intervals.loadout.get(Intervals.DATABASE[j])){
-                this._play(optionSets[j]);
+				console.log(Intervals.DATABASE[j]);
+				this.play(optionSets[j]);
+				console.log('generated note, playing note');
                 played = true;
             }
         }
 
-        if (played = false) this._play(optionSets[22]); //edge case 
+		console.log('generating note');
+		if (played = false){ 
+			this.play(optionSets[22]);
+			console.log('using generate note edge case')
+		}; //edge case 
     }
 
 	//Edge cases and preventing chromatism hell
     private static noteAdjustments(options: Array<String>):String {
+
+			console.log('adjusting notes');
 			let note: any = "";
 			let random: number = 0;
 			
 			// NOTE PREVENTIONS
-			random = Math.random()* options.length - 1;
+			random = Math.floor(Math.random()* options.length);
 			note = Intervals.loadout.get(options[random]);
 			
 			// Halve Probability of Trills and Repeats
 			if (note == Note.secondToLastRecorded || note == Note.lastAbsolute)
 			{
+				console.log("halvin probability of Trills and Repeats")
 				random = Math.random()* options.length - 1;
 				note = Intervals.loadout.get(options[random]);
 			}
@@ -139,12 +155,17 @@ export class Button {
 
 
 function test(){
-	Note.lastAbsolute = 'C4';
-    soundplayer.play(`${soundfilesPath}D3.wav`)
-    soundplayer.play(`${soundfilesPath}B3.wav`)
+	Note.lastRecorded = 'C4';
+    //soundplayer.play(`${soundfilesPath}D3.wav`)
+    //soundplayer.play(`${soundfilesPath}B3.wav`)
 	Mode.index = Math.floor(Math.random() * 4);
 	Mode.init();
 
+	Button.playNote();
+
+	setTimeout(Button.playChord, 5000);
+	setTimeout(Button.play, 5000);
+	setTimeout(Button.playChord, 5000);
 }
 
 test();

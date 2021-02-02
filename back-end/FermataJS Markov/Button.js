@@ -13,15 +13,17 @@ var Button = /** @class */ (function () {
         this.noteName = 'n/a';
         this.type = "";
     }
-    Button.prototype.playNote = function () {
+    Button.playNote = function () {
         Button.generateNote();
     };
-    Button._play = function (options) {
+    Button.play = function (options) {
+        console.log(Button.noteAdjustments(options));
         var noteName = Button.noteAdjustments(options);
         exports.soundplayer.play("" + exports.soundfilesPath + noteName + ".wav");
+        console.log(exports.soundfilesPath + " playing " + noteName);
         console.log(noteName);
     };
-    Button.prototype.playChord = function () {
+    Button.playChord = function () {
         var chordTones = Mode_js_1.Mode.current.chords[Math.floor(Math.random() * Mode_js_1.Mode.current.chords.length)];
         console.log("These are the chord tones: " + chordTones);
         exports.soundplayer.play("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[0]) + ".wav");
@@ -34,27 +36,37 @@ var Button = /** @class */ (function () {
         //TODO
     };
     Button.generateNote = function () {
+        console.log('starting GenerateNote');
         var played = false;
         var optionSets;
         optionSets = Mode_js_1.Mode.current.logic;
-        for (var j = 0; j < Intervals_js_1.Intervals.DATABASE.length - 1; j++) {
+        console.log(optionSets);
+        for (var j = 0; j < Intervals_js_1.Intervals.DATABASE.length; j++) {
             if (Note_js_1.Note.lastRecorded == Intervals_js_1.Intervals.loadout.get(Intervals_js_1.Intervals.DATABASE[j])) {
-                this._play(optionSets[j]);
+                console.log(Intervals_js_1.Intervals.DATABASE[j]);
+                this.play(optionSets[j]);
+                console.log('generated note, playing note');
                 played = true;
             }
         }
-        if (played = false)
-            this._play(optionSets[22]); //edge case 
+        console.log('generating note');
+        if (played = false) {
+            this.play(optionSets[22]);
+            console.log('using generate note edge case');
+        }
+        ; //edge case 
     };
     //Edge cases and preventing chromatism hell
     Button.noteAdjustments = function (options) {
+        console.log('adjusting notes');
         var note = "";
         var random = 0;
         // NOTE PREVENTIONS
-        random = Math.random() * options.length - 1;
+        random = Math.floor(Math.random() * options.length);
         note = Intervals_js_1.Intervals.loadout.get(options[random]);
         // Halve Probability of Trills and Repeats
         if (note == Note_js_1.Note.secondToLastRecorded || note == Note_js_1.Note.lastAbsolute) {
+            console.log("halvin probability of Trills and Repeats");
             random = Math.random() * options.length - 1;
             note = Intervals_js_1.Intervals.loadout.get(options[random]);
         }
@@ -93,15 +105,17 @@ var Button = /** @class */ (function () {
         return note;
     };
     Button.sounds = ["Small", "Octave", "Harmony", "Chord", "Transpose"];
-    Button.weights = [88.5, 3.5, 3.5, 2, 2, 0.5];
+    Button.weights = [88.5, 3.5, 3.5, 2, 0.5];
     return Button;
 }());
 exports.Button = Button;
 function test() {
-    Note_js_1.Note.lastAbsolute = 'C4';
-    exports.soundplayer.play(exports.soundfilesPath + "D3.wav");
-    exports.soundplayer.play(exports.soundfilesPath + "B3.wav");
+    Note_js_1.Note.lastRecorded = 'C4';
+    //soundplayer.play(`${soundfilesPath}D3.wav`)
+    //soundplayer.play(`${soundfilesPath}B3.wav`)
     Mode_js_1.Mode.index = Math.floor(Math.random() * 4);
     Mode_js_1.Mode.init();
+    Button.playNote();
+    setTimeout(Button.playChord, 10000);
 }
 test();
