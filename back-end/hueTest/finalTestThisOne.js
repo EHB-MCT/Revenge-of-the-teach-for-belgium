@@ -48,7 +48,8 @@ board.on('ready', function(){
         red -= 7;
         blue -= 7;
         io.sockets.emit('inputChange', {
-          id: 'green1'
+          id: 'green1',
+          value: 4
         });
       }
     });
@@ -71,7 +72,8 @@ board.on('ready', function(){
         red -= 15;
         blue -= 15;
         io.sockets.emit('inputChange', {
-          id: 'yellow1'
+          id: 'yellow1',
+          value: 5
         });
       }
     });
@@ -94,7 +96,8 @@ board.on('ready', function(){
         red -= 7;
         blue += 20;
         io.sockets.emit('inputChange', {
-          id: 'blue1'
+          id: 'blue1',
+          value: 6
         });
       }
     });
@@ -113,7 +116,8 @@ board.on('ready', function(){
       red += 20;
       blue -= 7;
       io.sockets.emit('inputChange', {
-        id: 'red1'
+        id: 'red1',
+        value: 7
       });
     });
 
@@ -135,7 +139,8 @@ board.on('ready', function(){
         red += 15;
         blue += 15;
         io.sockets.emit('inputChange', {
-          id: 'white1'
+          id: 'white1',
+          value: 8
         });
       }
 
@@ -159,7 +164,8 @@ board.on('ready', function(){
         red -= 7;
         blue -= 7;
         io.sockets.emit('inputChange', {
-          id: 'green2'
+          id: 'green2',
+          value: 9
         });
       }
     });
@@ -182,7 +188,8 @@ board.on('ready', function(){
         red -= 15;
         blue -= 15;
         io.sockets.emit('inputChange', {
-          id: 'yellow2'
+          id: 'yellow2',
+          value: 10
         });
       }
     });
@@ -204,7 +211,8 @@ board.on('ready', function(){
         red -= 7;
         blue += 20;
         io.sockets.emit('inputChange', {
-          id: 'blue2'
+          id: 'blue2',
+          value: 11
         });
       }
     });
@@ -227,7 +235,8 @@ board.on('ready', function(){
         red += 20;
         blue -= 7;
         io.sockets.emit('inputChange', {
-          id: 'red2'
+          id: 'red2',
+          value: 12
         });
       }
     });
@@ -250,7 +259,8 @@ board.on('ready', function(){
         red += 15;
         blue += 15;
         io.sockets.emit('inputChange', {
-          id: 'white2'
+          id: 'white2',
+          value: 13
         });
       }
     });
@@ -273,7 +283,8 @@ board.on('ready', function(){
         red -= 7;
         blue -= 7;
         io.sockets.emit('inputChange', {
-          id: 'green3'
+          id: 'green3',
+          value: 14
         });
       }
     });
@@ -296,7 +307,8 @@ board.on('ready', function(){
         red -= 15;
         blue -= 15;
         io.sockets.emit('inputChange', {
-          id: 'yellow3'
+          id: 'yellow3',
+          value: 15
         });
       }
     });
@@ -319,7 +331,8 @@ board.on('ready', function(){
         red -= 7;
         blue += 20;
         io.sockets.emit('inputChange', {
-          id: 'blue3'
+          id: 'blue3',
+          value: 16
         });
       }
     });
@@ -342,7 +355,8 @@ board.on('ready', function(){
         red += 20;
         blue -= 7;
         io.sockets.emit('inputChange', {
-          id: 'red3'
+          id: 'red3',
+          value: 17
         });
       }
     });
@@ -365,7 +379,8 @@ board.on('ready', function(){
         red += 15;
         blue += 15;
         io.sockets.emit('inputChange', {
-          id: 'white3'
+          id: 'white3',
+          value: 18
         });
       }
     });
@@ -388,7 +403,8 @@ board.on('ready', function(){
         red -= 7;
         blue -= 7;
         io.sockets.emit('inputChange', {
-          id: 'green4'
+          id: 'green4',
+          value: 19
         });
       }
     });
@@ -410,7 +426,8 @@ board.on('ready', function(){
         red -= 15;
         blue -= 15;
         io.sockets.emit('inputChange', {
-          id: 'yellow4'
+          id: 'yellow4',
+          value: 20
         });
       }
     });
@@ -432,7 +449,8 @@ board.on('ready', function(){
         red -= 7;
         blue += 20;
         io.sockets.emit('inputChange', {
-          id: 'blue4'
+          id: 'blue4',
+          value: 21
         });
       }
     });
@@ -454,7 +472,8 @@ board.on('ready', function(){
         red += 20;
         blue -= 7;
         io.sockets.emit('inputChange', {
-          id: 'red4'
+          id: 'red4',
+          value: 22
         });
       }
     });
@@ -476,7 +495,8 @@ board.on('ready', function(){
         red += 15;
         blue += 15;
         io.sockets.emit('inputChange', {
-          id: 'white4'
+          id: 'white4',
+          value: 23
         });
       }
     });
@@ -498,7 +518,8 @@ board.on('ready', function(){
         red += 15;
         blue += 15;
         io.sockets.emit('inputChange', {
-          id: 'white5'
+          id: 'white5',
+          value: 24
         });
       }
     });
