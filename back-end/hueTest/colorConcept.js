@@ -1,13 +1,18 @@
+let RGBconverter = require('@q42philips/hue-color-converter')
+
 let green = 50;
 let blue = 50;
 let red = 50;
 
+let defaultAddValue = 20;
+let defaultSubtractValue = -7;
+
+let totalAddValue = 15;
+let;
+
 let timer = 30000;
 
-class Button{
-    constructor(){
-    }
-
+export class Button{
     addValues(){
         green += greenValue;
         blue += blueValue;
@@ -15,52 +20,52 @@ class Button{
     }
 }
 
-class GreenButton extends Button{
+export class GreenButton extends Button{
     constructor() {
-        greenValue = 20;
-        redValue = -7;
-        blueValue = -7;
+        greenValue = defaultAddValue;
+        redValue = defaultSubtractValue;
+        blueValue = defaultSubtractValue;
     };
 }
-class RedButton extends Button{
+export class RedButton extends Button{
     constructor() {
-        greenValue = -7;
-        redValue = 20;
-        blueValue = -7;
+        greenValue = defaultSubtractValue;
+        redValue = defaultAddValue;
+        blueValue = defaultSubtractValue;
     };
 }
 
-class BlueButton extends Button{
+export class BlueButton extends Button{
     constructor() {
-        greenValue = -7;
-        redValue = -7;
-        blueValue = 20;
+        greenValue = defaultSubtractValue;
+        redValue = defaultSubtractValue;
+        blueValue = defaultAddValue;
     }
 }
 
-class YellowButton extends Button{
+export class YellowButton extends Button{
     constructor() {
-        greenValue = -15;
-        redValue = -15;
-        blueValue = -15;
+        greenValue = -totalAddValue;
+        redValue = -totalAddValue;
+        blueValue = -totalAddValue;
     }
 }
 
-class WhiteButton extends Button{
+export class WhiteButton extends Button{
     constructor() {
-        greenValue = 15;
-        redValue = 15;
-        blueValue = 15;
+        greenValue = totalAddValue;
+        redValue = totalAddValue;
+        blueValue = totalAddValue;
     }
 }
 
-let blueButton = new BlueButton();
 
-if(blueButton == onDown) blueButton.addValues();
+
+//if(blueButton == onDown) blueButton.addValues();
 
 
 
 
 setInterval(event => {
- event.pushRGBtoHue(red,green,blue);
+    let hueXY = RGBconverter(red,green,blue);
 }, timer);
