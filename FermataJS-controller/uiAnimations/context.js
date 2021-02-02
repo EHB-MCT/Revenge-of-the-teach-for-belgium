@@ -1,4 +1,3 @@
-'use strict';
 /** @type {CanvasRenderingContext2D} */
 let context;
 

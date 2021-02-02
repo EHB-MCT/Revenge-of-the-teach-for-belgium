@@ -1,5 +1,3 @@
-'use strict';
-
 import context from "./context.js";
 import * as Utils from "./utils.js";
 
