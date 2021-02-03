@@ -40,8 +40,6 @@ playerRouter.route("/players")
                 res.redirect('../front-end/manual.html');*/
     });
 
-
-
 // Getting live
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);

@@ -5,6 +5,7 @@ let counter = 0;
 let userData = [];
 let totalUsers = 2;
 let formSubmit = false;
+let startSimulation = false;
 let backButton;
 let userForm;
 let form = document.getElementById("userForm");
@@ -26,10 +27,13 @@ function setTotalUserCount() {
 //event listener die de juiste functie opent bij het drukken op next of back
 form.addEventListener("submit", (event) => {
     event.preventDefault();
-    if (formSubmit) {
+    if (startSimulation) {
+        location.href = "http://127.0.0.1:5500/FermataJS-controller/public/index.html";
+    } else if (formSubmit) {
         form.innerHTML = getHtmlString.start;
         form.classList = "form-container";
         document.getElementById("big-container").style.height = "100vh";
+        startSimulation = true;
     } else if (counter == 0) {
         form.innerHTML = getHtmlString.count;
         backButton = document.getElementById("backButtonUser");
@@ -75,7 +79,7 @@ function dataSaveOfUser() {
     if (counter >= totalUsers) {
         form.innerHTML = "";
         apiCallDataOfUser();
-        startSimulation();
+        showUserManual();
     } else {
         nameInput.value = ""
         emailInput.value = "";
@@ -91,8 +95,6 @@ function dataSaveOfUser() {
 
 // De informatie van de gebruikers worden met een fetch naar de back-end verzonden
 async function apiCallDataOfUser() {
-    console.log(userData);
-    console.log("call to back end...");
     let request = await fetch('http://localhost:4000/api/players', {
         method: "POST",
         body: JSON.stringify({
@@ -106,7 +108,7 @@ async function apiCallDataOfUser() {
     return await request.json();
 }
 
-function startSimulation() {
+function showUserManual() {
     form.innerHTML = getHtmlString.manual;
     form.classList = "form-container form-container-manual";
     document.getElementById("big-container").style.height = "160vh";
@@ -168,11 +170,14 @@ const getHtmlString = {
     <h1 class="form-title">Before you can start read the manual first.</h1>
     <img src="manual copy.svg" alt="">
     <div class="form-button-container-manual">
-        <button id="nextButtonUser" type="submit" class="btn btn-primary form-next-button">Start</button>
+        <button id="nextButtonUser" type="submit" class="btn btn-primary form-next-button">Ready</button>
     </div>
     </div>`,
 
     start: `<div class="log-in-container">
     <h1 class="form-title">Have fun!</h1>
+    <div class="form-button-container-manual">
+        <button id="nextButtonUser" type="submit" class="btn btn-primary form-next-button">Start</button>
+    </div>
     </div>`
 };
