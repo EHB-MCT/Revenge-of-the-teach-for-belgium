@@ -92,7 +92,7 @@ board.on('ready', function(){
           value: 4
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -119,7 +119,7 @@ board.on('ready', function(){
           value: 5
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -146,7 +146,7 @@ board.on('ready', function(){
           value: 6
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -173,7 +173,7 @@ board.on('ready', function(){
           value: 7
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -200,7 +200,7 @@ board.on('ready', function(){
           value: 8
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
 
@@ -228,7 +228,7 @@ board.on('ready', function(){
           value: 9
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -255,7 +255,7 @@ board.on('ready', function(){
           value: 10
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -281,7 +281,7 @@ board.on('ready', function(){
           value: 11
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -308,7 +308,7 @@ board.on('ready', function(){
           value: 12
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -335,7 +335,7 @@ board.on('ready', function(){
           value: 13
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -362,7 +362,7 @@ board.on('ready', function(){
           value: 14
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -389,7 +389,7 @@ board.on('ready', function(){
           value: 15
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -416,7 +416,7 @@ board.on('ready', function(){
           value: 16
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -443,7 +443,7 @@ board.on('ready', function(){
           value: 17
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -470,7 +470,7 @@ board.on('ready', function(){
           value: 18
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -497,7 +497,7 @@ board.on('ready', function(){
           value: 19
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -523,7 +523,7 @@ board.on('ready', function(){
           value: 20
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -549,7 +549,7 @@ board.on('ready', function(){
           value: 21
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -575,7 +575,7 @@ board.on('ready', function(){
           value: 22
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -601,7 +601,7 @@ board.on('ready', function(){
           value: 23
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -627,7 +627,7 @@ board.on('ready', function(){
           value: 24
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
