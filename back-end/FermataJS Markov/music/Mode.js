@@ -5,10 +5,7 @@ var Intervals_1 = require("./Intervals");
 var Mode = /** @class */ (function () {
     function Mode() {
     }
-    Mode.change = function () {
-        throw new Error("Method not implemented.");
-    };
-    Mode.prototype.change = function (modeIndex) {
+    Mode.change = function (modeIndex) {
         if (modeIndex === void 0) { modeIndex = -1; }
         if (modeIndex == -1) {
             var newIndex = Math.floor(Math.random() * Mode.DATABASE.length);
@@ -28,7 +25,7 @@ var Mode = /** @class */ (function () {
     Mode.init = function () {
         Mode.previous = Mode.current;
         Mode.current = Mode.DATABASE[Mode.index];
-        console.log(Mode.current);
+        console.log(Mode.current.name);
         Intervals_1.Intervals.updated = false;
         console.log("Intervals updated: " + Intervals_1.Intervals.updated);
         Intervals_1.Intervals.populate();

@@ -5,7 +5,7 @@ import {soundplayer} from '../Button';
 
 export class Harmony extends Button{
 
-    onPress(){
+    public static onPress(){
 
         Button.playNote();
         Harmony.playHarmonyTone()

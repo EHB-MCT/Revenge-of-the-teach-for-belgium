@@ -7,9 +7,6 @@ import { Intervals } from "./Intervals";
 		chords: Array<Array<String>>
 	}
 export class Mode {
-    static change() {
-        throw new Error("Method not implemented.");
-    }
 
     // Modes. Ionian in Major is 3 Octaves, Aeolian in Minor. The rest are 2 octaves.
 	static IONIAN: ModeDef = {
@@ -198,7 +195,8 @@ export class Mode {
 	public static previous: ModeDef;
 
 
-	public change(modeIndex = -1){
+	public static change(modeIndex = -1){
+		
 		if (modeIndex == -1){
 		
 			let newIndex = Math.floor(Math.random()* Mode.DATABASE.length);
@@ -218,7 +216,7 @@ export class Mode {
 	public static init(){
 		Mode.previous = Mode.current;
 		Mode.current = Mode.DATABASE[Mode.index];
-		console.log(Mode.current);
+		console.log(Mode.current.name);
 		Intervals.updated = false;
 		console.log(`Intervals updated: ${Intervals.updated}`)
 		Intervals.populate();

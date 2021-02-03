@@ -4,7 +4,7 @@ import { Mode } from "../music/Mode";
 
 export class Transpose extends Button{
 
-    public onPress(){
+    public static onPress(){
 
         Mode.change();
         Key.change();

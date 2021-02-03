@@ -25,22 +25,27 @@ function chooseMarkovFunction(){
   switch (markovFunction){
     case "Small":
       Small.onPress();
+      console.log('Generating small note')
       break;
 
     case "Octave":
       Octave.onPress();
+      console.log('Generating octave')
       break;
 
     case "Harmony":
       Harmony.onPress();
+      console.log('Generating harmony')
       break;
 
     case "Chord":
       Chord.onPress();
+      console.log('Generating chord')
       break;
 
     case "Transpose":
       Transpose.onPress();
+      console.log('Generating transposition')
       break;
   }
 

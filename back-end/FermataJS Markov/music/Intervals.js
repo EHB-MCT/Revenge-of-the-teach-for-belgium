@@ -9,7 +9,6 @@ var Intervals = /** @class */ (function () {
     Intervals.populate = function () {
         console.log("populating");
         if (Intervals.updated == false) {
-            console.log("updated is false");
             var modeOffset = void 0;
             console.log("Current key: " + Key_1.Key.current);
             console.log("Current mode: " + Mode_1.Mode.DATABASE[Mode_1.Mode.index].name);
@@ -26,7 +25,6 @@ var Intervals = /** @class */ (function () {
                 var sparta = Key_1.Key.DATABASE[Math.floor(Math.random() * 2)];
                 var athena = sparta[i + modeOffset];
                 Intervals.loadout.set(Intervals.DATABASE[i], athena);
-                console.log(athena);
             }
             Intervals.updated = true;
             console.log(Intervals.loadout);
