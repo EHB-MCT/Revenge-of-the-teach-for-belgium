@@ -3,6 +3,14 @@ var socket = require('socket.io');
 var five = require('johnny-five'),
 board = new five.Board();
 
+import {Small} from '../FermataJS Markov/specials/Small';
+import {Chord} from '../FermataJS Markov/specials/Chord';
+import {Harmony} from '../FermataJS Markov/specials/Harmony';
+import {Transpose} from '../FermataJS Markov/specials/Transpose';
+import {Octave} from '../FermataJS Markov/specials/Octave';
+
+let Chance = require('chance');
+
 // Init variabelen
 var port = 5000;
 var cooldown = 1500;
@@ -11,7 +19,34 @@ var green = 50;
 var blue = 50;
 var timer = 30000;
 
-// Start alles als een Arduino bord gevonden wordt
+function chooseMarkovFunction(){
+  let weights = [88.5, 3.5, 3.5, 2, 0.5]; 
+  let markovFunction = Chance.weights(["Small", "Octave", "Harmony", "Chord", "Transpose"], weights)
+  switch (markovFunction){
+    case "Small":
+      Small.onPress();
+      break;
+
+    case "Octave":
+      Octave.onPress();
+      break;
+
+    case "Harmony":
+      Harmony.onPress();
+      break;
+
+    case "Chord":
+      Chord.onPress();
+      break;
+
+    case "Transpose":
+      Transpose.onPress();
+      break;
+  }
+
+}
+
+// Start alles als een Arduino bord gevonden wordt.
 board.on('ready', function(){
   // App setup
   var app = express();

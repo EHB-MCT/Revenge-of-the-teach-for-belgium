@@ -116,6 +116,8 @@ function test() {
     Mode_js_1.Mode.index = Math.floor(Math.random() * 4);
     Mode_js_1.Mode.init();
     Button.playNote();
-    setTimeout(Button.playChord, 10000);
+    setTimeout(Button.playChord, 5000);
+    setTimeout(Button.play, 5000);
+    setTimeout(Button.playChord, 5000);
 }
 test();

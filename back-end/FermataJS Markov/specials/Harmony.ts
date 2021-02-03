@@ -15,7 +15,7 @@ export class Harmony extends Button{
     private static playHarmonyTone() {
 
 		let harmonyTone: any;
-		let choices: any/* :Array<String> */ = [];
+		let choices: Array<any> = [];
 		var i/* :Map<String, String> */ = Intervals.loadout;
 
 			 if (Note.lastAbsolute == i.get("one1")) choices = [i.get("thr1"), i.get("fiv1"), i.get("thr2"), i.get("fiv2")];

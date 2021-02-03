@@ -1,4 +1,0 @@
-class Harmony extends Button{
-
-    
-}
