@@ -12,7 +12,7 @@ export class Octave extends Button{
 
     public static onPress(){
 
-        //Button.playNote();
+        Button.playNote();
         Octave.playOctave();
         
     }
