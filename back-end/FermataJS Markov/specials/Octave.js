@@ -21,10 +21,6 @@ var Octave = /** @class */ (function (_super) {
     function Octave() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Octave.prototype["new"] = function () {
-        //super();
-        Button_1.Button.playsNote = true;
-    };
     Octave.onPress = function () {
         Button_1.Button.playNote();
         Octave.playOctave();
@@ -41,7 +37,6 @@ var Octave = /** @class */ (function (_super) {
         Button_1.soundplayer.play("" + Button_1.soundfilesPath + octaveTone + ".wav");
         Note_1.Note.lastOctave = octaveTone;
     };
-    Octave.WEIGHT = 3.5;
     return Octave;
 }(Button_1.Button));
 exports.Octave = Octave;

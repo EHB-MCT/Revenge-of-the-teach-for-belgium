@@ -1,38 +1,59 @@
-import {Intervals} from './music/Intervals.js';
-import {Key} from './music/Key.js';
-import {Note} from './music/Note.js';
-import {Mode} from './music/Mode.js';
-import { Small } from './specials/Small.js';
-import { Harmony } from './specials/Harmony.js';
-import { Octave } from './specials/Octave';
-import { Button } from '../FermataJS Markov/Button'
-import { Transpose } from './specials/Transpose.js';
-import { Chord } from './specials/Chord.js';
+import {
+    Intervals
+} from './music/Intervals.js';
+import {
+    Key
+} from './music/Key.js';
+import {
+    Note
+} from './music/Note.js';
+import {
+    Mode
+} from './music/Mode.js';
+import {
+    Small
+} from './specials/Small.js';
+import {
+    Harmony
+} from './specials/Harmony.js';
+import {
+    Octave
+} from './specials/Octave';
+import {
+    Button
+} from '../FermataJS Markov/Button'
+import {
+    Transpose
+} from './specials/Transpose.js';
+import {
+    Chord
+} from './specials/Chord.js';
 
-function test(){
-	Note.lastRecorded = 'C4';
-	Mode.index = Math.floor(Math.random() * 4);
-    Mode.init();
+
+Note.lastRecorded = 'C4';
+Mode.index = Math.floor(Math.random() * 4);
+Mode.init();
+
+for (let i = 0; i < 10; i++) {
     
     setTimeout(() => {
         console.log('Button playNote');
-        Button.playNote();
-    }, 5000);
-
-	setTimeout(() =>{
+        Small.playNote();
+    }, 3000);
+    
+    setTimeout(() => {
         console.log('Button play chord');
         Button.playChord();
-    }, 10000);
-
-    setTimeout(() =>{
+    }, 6000);
+    
+    setTimeout(() => {
         console.log('playing Transpose');
         Transpose.onPress();
-    }, 15000); 
-	setTimeout(() =>{
+    }, 9000);
+    setTimeout(() => {
         console.log('playing Octave');
         Octave.onPress();
-    }, 20000);
-	setTimeout(Chord.onPress, 25000);
+    }, 12000);
+    setTimeout(Chord.onPress, 25000);
 }
 
-test()

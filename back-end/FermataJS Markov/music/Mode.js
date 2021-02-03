@@ -207,3 +207,4 @@ var Mode = /** @class */ (function () {
     return Mode;
 }());
 exports.Mode = Mode;
+exports["default"] = Mode;

@@ -8,3 +8,5 @@ export class Small extends Button {
         Button.playNote();
     }
 }
+
+export default Small;

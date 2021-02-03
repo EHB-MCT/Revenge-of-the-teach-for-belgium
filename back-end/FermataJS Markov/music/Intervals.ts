@@ -1,3 +1,4 @@
+import { Module } from "module";
 import { Key } from "./Key";
 import { Mode } from "./Mode";
 

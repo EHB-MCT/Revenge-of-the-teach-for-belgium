@@ -196,7 +196,7 @@ export class Mode {
 
 
 	public static change(modeIndex = -1){
-		
+
 		if (modeIndex == -1){
 		
 			let newIndex = Math.floor(Math.random()* Mode.DATABASE.length);
@@ -222,3 +222,5 @@ export class Mode {
 		Intervals.populate();
 	}
 }
+
+export default Mode;

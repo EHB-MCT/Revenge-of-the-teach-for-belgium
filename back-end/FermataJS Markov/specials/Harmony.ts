@@ -6,12 +6,10 @@ import {soundplayer} from '../Button';
 export class Harmony extends Button{
 
     public static onPress(){
-
         Button.playNote();
         Harmony.playHarmonyTone()
     }
     
-
     private static playHarmonyTone() {
 
 		let harmonyTone: any;

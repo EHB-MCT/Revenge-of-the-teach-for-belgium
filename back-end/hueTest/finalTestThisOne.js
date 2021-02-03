@@ -3,11 +3,13 @@ var socket = require('socket.io');
 var five = require('johnny-five'),
 board = new five.Board();
 
-import {Small} from '../FermataJS Markov/specials/Small';
-import {Chord} from '../FermataJS Markov/specials/Chord';
-import {Harmony} from '../FermataJS Markov/specials/Harmony';
-import {Transpose} from '../FermataJS Markov/specials/Transpose';
-import {Octave} from '../FermataJS Markov/specials/Octave';
+let Small = require('../FermataJS Markov/specials/Small');
+//import {Small} from '../FermataJS Markov/specials/Small';
+//import {Chord} from '../FermataJS Markov/specials/Chord';
+//import {Harmony} from '../FermataJS Markov/specials/Harmony';
+//import {Transpose} from '../FermataJS Markov/specials/Transpose';
+//import {Octave} from '../FermataJS Markov/specials/Octave';
+
 
 let Chance = require('chance');
 
@@ -19,35 +21,40 @@ var green = 50;
 var blue = 50;
 var timer = 30000;
 
+let useMarkov = false;
+
 function chooseMarkovFunction(){
-  let weights = [88.5, 3.5, 3.5, 2, 0.5]; 
-  let markovFunction = Chance.weights(["Small", "Octave", "Harmony", "Chord", "Transpose"], weights)
-  switch (markovFunction){
-    case "Small":
-      Small.onPress();
-      console.log('Generating small note')
-      break;
-
-    case "Octave":
-      Octave.onPress();
-      console.log('Generating octave')
-      break;
-
-    case "Harmony":
-      Harmony.onPress();
-      console.log('Generating harmony')
-      break;
-
-    case "Chord":
-      Chord.onPress();
-      console.log('Generating chord')
-      break;
-
-    case "Transpose":
-      Transpose.onPress();
-      console.log('Generating transposition')
-      break;
+  if (useMarkov == true){
+    let weights = [88.5, 3.5, 3.5, 2, 0.5]; 
+    let markovFunction = Chance.weights(["Small", "Octave", "Harmony", "Chord", "Transpose"], weights);
+    switch (markovFunction){
+      case "Small":
+        Small.onPress();
+        console.log('Generating small note')
+        break;
+  
+      case "Octave":
+        Octave.onPress();
+        console.log('Generating octave')
+        break;
+  
+      case "Harmony":
+        Harmony.onPress();
+        console.log('Generating harmony')
+        break;
+  
+      case "Chord":
+        Chord.onPress();
+        console.log('Generating chord')
+        break;
+  
+      case "Transpose":
+        Transpose.onPress();
+        console.log('Generating transposition')
+        break;
+    }
   }
+  else return;
 
 }
 
