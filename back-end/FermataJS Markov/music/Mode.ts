@@ -215,10 +215,11 @@ export class Mode {
 
 	public static init(){
 		Mode.previous = Mode.current;
+		console.log(`Previous mode: ${Mode.previous}`);
 		Mode.current = Mode.DATABASE[Mode.index];
-		console.log(Mode.current.name);
+		console.log(`New mode: ${Mode.current}`);
 		Intervals.updated = false;
-		console.log(`Intervals updated: ${Intervals.updated}`)
+		console.log(`Intervals updated: ${Intervals.updated}`);
 		Intervals.populate();
 	}
 }

@@ -14,22 +14,15 @@ const url2 = `${host}/api/${username}/lights/${lampID2}/state`;
 
 let huexy;
 
-let Small = require('../FermataJS Markov/specials/Small');
-let Chord = require("../FermataJS Markov/specials/Chord");
-let Harmony = require("../FermataJS Markov/specials/Harmony");
-let Transpose = require("../FermataJS Markov/specials/Transpose");
-let Octave = require("../FermataJS Markov/specials/Octave");
-//import {Small} from '../FermataJS Markov/specials/Small';
-//import {Chord} from '../FermataJS Markov/specials/Chord.js';
-//import {Harmony} from '../FermataJS Markov/specials/Harmony';
-//import {Transpose} from '../FermataJS Markov/specials/Transpose';
-//import {Octave} from '../FermataJS Markov/specials/Octave';
-
+const  {Small} = require('../FermataJS Markov/specials/Small');
+const {Chord} = require("../FermataJS Markov/specials/Chord");
+const {Harmony} = require("../FermataJS Markov/specials/Harmony");
+const {Transpose} = require("../FermataJS Markov/specials/Transpose");
+const {Octave} = require("../FermataJS Markov/specials/Octave");
 
 let Chance = require('chance').Chance();
 
 
-const { Button } = require('../FermataJS Markov/Button');
 const { default: Mode } = require('../FermataJS Markov/music/Mode');
 const { Note } = require('../FermataJS Markov/music/Note');
 
@@ -41,6 +34,11 @@ var green = 50;
 var blue = 50;
 var timer = 30000;
 
+Note.lastRecorded = 'C3';
+Mode.index = Math.floor(Math.random() * 4);
+Mode.current = Mode.IONIAN;
+Mode.init();
+
 let useMarkov = true;
 
 function chooseMarkovFunction(){
@@ -51,27 +49,27 @@ function chooseMarkovFunction(){
     let markovFunction = Chance.weighted(["Small", "Octave", "Harmony", "Chord", "Transpose"], weights);
     switch (markovFunction){
       case "Small":
-        Small.onPress;
+        Small.onPress();
         console.log('Generating small note')
         break;
   
       case "Octave":
-        Octave.onPress;
+        Octave.onPress();
         console.log('Generating octave')
         break;
   
       case "Harmony":
-        Harmony.onPress;
+        Harmony.onPress();
         console.log('Generating harmony')
         break;
   
       case "Chord":
-        Chord.onPress;
+        Chord.onPress();
         console.log('Generating chord')
         break;
   
       case "Transpose":
-        Transpose.onPress;
+        Transpose.onPress();
         console.log('Generating transposition')
         break;
     }
@@ -674,12 +672,8 @@ board.on('ready', function(){
       });*/
       
     });
-    Note.lastAbsolute = "C4";
-    Mode.index = Math.floor(Math.random() * 4);
-
-    Mode.init();
-
-  chooseMarkovFunction();
+    
 });
 
-chooseMarkovFunction();
+
+  chooseMarkovFunction();

@@ -21,7 +21,7 @@ var Small = /** @class */ (function (_super) {
         return _super.call(this) || this;
     }
     Small.onPress = function () {
-        //DRUK HIER MET ARDUINO EVENT OFZO
+        console.log('playing smoll not');
         Button_1.Button.playNote();
     };
     ;

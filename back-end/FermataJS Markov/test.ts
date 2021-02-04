@@ -29,20 +29,20 @@ import {
     Chord
 } from './specials/Chord.js';
 
-
-Note.lastRecorded = 'C4';
+Note.lastRecorded = 'C3';
 Mode.index = Math.floor(Math.random() * 4);
+Mode.current = Mode.IONIAN;
 Mode.init();
  
     Button.playChord();
     setTimeout(() => {
-        console.log('Button playNote');
+        console.log('Small playNote');
         Small.playNote();
     }, 3000);
     
     setTimeout(() => {
-        console.log('Button play chord');
-        Button.playChord();
+        console.log('Chord playChord');
+        Chord.onPress();
     }, 6000);
     
     setTimeout(() => {

@@ -23,8 +23,11 @@ var Transpose = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Transpose.onPress = function () {
+        console.log('changing mode');
         Mode_1.Mode.change();
+        console.log('changing key');
         Key_1.Key.change();
+        console.log('playing transposition chord');
         Button_1.Button.playChord();
     };
     return Transpose;

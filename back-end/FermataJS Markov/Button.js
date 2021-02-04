@@ -6,8 +6,9 @@ var Key_js_1 = require("./music/Key.js");
 var Note_js_1 = require("./music/Note.js");
 var Mode_js_1 = require("./music/Mode.js");
 exports.soundplayer = require('sound-play');
-//export const soundfilesPath = './notes';
-exports.soundfilesPath = 'C:/Users/pimto/Downloads/hf-january-master/january/assets/notes/';
+//This might be bugged in the module itself, absolute path works so far.
+//export const soundfilesPath = './notes/';
+exports.soundfilesPath = 'C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/';
 var Button = /** @class */ (function () {
     function Button() {
         this.playsNote = false;
@@ -39,7 +40,9 @@ var Button = /** @class */ (function () {
         var played = false;
         var optionSets;
         optionSets = Mode_js_1.Mode.current.logic;
+        console.log(Intervals_js_1.Intervals.loadout);
         for (var j = 0; j < Intervals_js_1.Intervals.DATABASE.length; j++) {
+            console.log("starting loop, current interation: " + j);
             if (Note_js_1.Note.lastRecorded == Intervals_js_1.Intervals.loadout.get(Intervals_js_1.Intervals.DATABASE[j])) {
                 this.play(optionSets[j]);
                 console.log('generated note, playing note');
@@ -63,7 +66,7 @@ var Button = /** @class */ (function () {
         // Halve Probability of Trills and Repeats
         if (note == Note_js_1.Note.secondToLastRecorded || note == Note_js_1.Note.lastAbsolute) {
             console.log("halvin probability of Trills and Repeats");
-            random = Math.random() * options.length - 1;
+            random = Math.random() * options.length;
             note = Intervals_js_1.Intervals.loadout.get(options[random]);
         }
         var g = 0;
@@ -105,9 +108,3 @@ var Button = /** @class */ (function () {
     return Button;
 }());
 exports.Button = Button;
-function test() {
-    Note_js_1.Note.lastRecorded = 'C4';
-    Mode_js_1.Mode.index = Math.floor(Math.random() * 4);
-    Mode_js_1.Mode.init();
-}
-test();

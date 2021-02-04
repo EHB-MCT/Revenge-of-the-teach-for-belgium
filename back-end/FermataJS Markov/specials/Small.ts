@@ -6,8 +6,7 @@ export class Small extends Button {
   }
 
   public static onPress(){
-        //DRUK HIER MET ARDUINO EVENT OFZO
-
+        console.log('playing smoll not')
         Button.playNote();
   };
 

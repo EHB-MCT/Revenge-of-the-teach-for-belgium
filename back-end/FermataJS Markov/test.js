@@ -7,17 +7,18 @@ var Octave_1 = require("./specials/Octave");
 var Button_1 = require("../FermataJS Markov/Button");
 var Transpose_js_1 = require("./specials/Transpose.js");
 var Chord_js_1 = require("./specials/Chord.js");
-Note_js_1.Note.lastRecorded = 'C4';
+Note_js_1.Note.lastRecorded = 'C3';
 Mode_js_1.Mode.index = Math.floor(Math.random() * 4);
+Mode_js_1.Mode.current = Mode_js_1.Mode.IONIAN;
 Mode_js_1.Mode.init();
 Button_1.Button.playChord();
 setTimeout(function () {
-    console.log('Button playNote');
+    console.log('Small playNote');
     Small_js_1.Small.playNote();
 }, 3000);
 setTimeout(function () {
-    console.log('Button play chord');
-    Button_1.Button.playChord();
+    console.log('Chord playChord');
+    Chord_js_1.Chord.onPress();
 }, 6000);
 setTimeout(function () {
     console.log('playing Transpose');
