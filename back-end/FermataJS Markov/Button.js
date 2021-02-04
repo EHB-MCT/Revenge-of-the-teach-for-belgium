@@ -7,7 +7,7 @@ var Note_js_1 = require("./music/Note.js");
 var Mode_js_1 = require("./music/Mode.js");
 exports.soundplayer = require('sound-play');
 //export const soundfilesPath = './notes';
-exports.soundfilesPath = 'C:/Users/pimto/Downloads/hf-january-master/january/assets/notes/';
+exports.soundfilesPath = 'C:/Users/Nickname/Documents/School/2020-2021/Full Projects 3/Revenge-of-the-teach-for-belgium/back-end/FermataJS Markov/notes';
 var Button = /** @class */ (function () {
     function Button() {
         this.playsNote = false;
