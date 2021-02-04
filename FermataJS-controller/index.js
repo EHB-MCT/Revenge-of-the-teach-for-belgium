@@ -5,7 +5,7 @@ var five = require('johnny-five');
 board = new five.Board();
 
 var port = 5000;
-var cooldown = 100;
+var cooldown = 500;
 var red = 50;
 var green = 50;
 var blue = 50;
@@ -15,7 +15,7 @@ board.on('ready', () => {
 
   // App setup
   var app = express();
-  var server = app.listen(port, () => {
+  var server = app.listen(port, function(){
     console.log("listening to requests on port " + port);
   });
 
@@ -58,7 +58,7 @@ board.on('ready', () => {
      }
    });
 
-   // Gele button 6 - 7
+   // Gele button 6 - 7 deze werkt
    var yellowB1 = new five.Button(6);
    var yellowL1 = new five.Led(7);
    var yellow1on = true;
@@ -83,9 +83,9 @@ board.on('ready', () => {
  
        //
      }
-   });
+   }); 
 
-   /*// Blauwe button 8 - 9
+  // Blauwe button 8 - 9
    var blueB1 = new five.Button(8);
    var blueL1 = new five.Led(9);
    var blue1on = true;
@@ -112,7 +112,7 @@ board.on('ready', () => {
      }
    });
 
-   // Rode button 10 - 11
+   // Rode button 10 - 11 deze werkt
    var redB1 = new five.Button(10);
    var redL1 = new five.Led(11);
    var red1on = true;
@@ -167,7 +167,7 @@ board.on('ready', () => {
 
    });
 
-   // Groene button 22 -23
+   /*// Groene button 22 -23
    var greenB2 = new five.Button(22);
    var greenL2 = new five.Led(23);
    var green2on = true;
@@ -192,7 +192,7 @@ board.on('ready', () => {
  
        //
      }
-   });
+   });*/
 
    // Gele button 24 - 25
    var yellowB2 = new five.Button(24);
@@ -220,7 +220,8 @@ board.on('ready', () => {
        //
      }
    });
-   // Blauwe button 26 - 27
+
+   /*// Blauwe button 26 - 27
    var blueB2 = new five.Button(26);
    var blueL2 = new five.Led(27);
    var blue2on = true;
@@ -245,7 +246,7 @@ board.on('ready', () => {
  
        //
      }
-   });
+   });*/
 
    // Rode button 28 - 29
    var redB2 = new five.Button(28);
@@ -274,7 +275,7 @@ board.on('ready', () => {
      }
    });
 
-   // Witte button 30 - 31
+   /*// Witte button 30 - 31
    var whiteB2 = new five.Button(30);
    var whiteL2 = new five.Led(31);
    var white2on = true;
@@ -299,7 +300,7 @@ board.on('ready', () => {
  
        //
      }
-   });
+   });*/
 
    // Groene button 32 - 33
    var greenB3 = new five.Button(32);
@@ -462,6 +463,8 @@ board.on('ready', () => {
        //
      }
    });
+   
+   
    // Gele button 44 - 45
    var yellowB4 = new five.Button(44);
    var yellowL4 = new five.Led(45);
@@ -488,6 +491,8 @@ board.on('ready', () => {
        //
      }
    });
+   
+   
    // Blauwe button 46 - 47
    var blueB4 = new five.Button(46);
    var blueL4 = new five.Led(47);
@@ -514,6 +519,8 @@ board.on('ready', () => {
        //
      }
    });
+   
+   
    // Rode button 48 - 49
    var redB4 = new five.Button(48);
    var redL4 = new five.Led(49);
@@ -540,7 +547,9 @@ board.on('ready', () => {
        //
      }
    });
-   // Witte button 50 - 51
+   
+   
+   /*// Witte button 50 - 51
    var whiteB4 = new five.Button(50);
    var whiteL4 = new five.Button(51);
    var white4on = true;
@@ -565,9 +574,9 @@ board.on('ready', () => {
  
        //
      }
-   });
+   });*/
 
-   // Witte button 52 - 53
+   /*// Witte button 52 - 53
    var whiteB5 = new five.Button(52);
    var whiteL5 = new five.Button(53);
    var white5on = true;

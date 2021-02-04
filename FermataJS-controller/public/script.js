@@ -3,7 +3,7 @@ import {
     constants
 } from './app.js';
 
-import * as generateCircles from "../uiAnimations/generateCircles.js"
+//import * as generateCircles from "../uiAnimations/generateCircles.js"
 
 import {
     PianoGenie
@@ -139,7 +139,7 @@ function onKeyDown(event) {
         const button = getButtonFromKeyCode(event.key);
         if (button !== null) {
             buttonDown(button, true);
-            generateCircles.generate();
+            //generateCircles.generate();
         }
     }
 }
