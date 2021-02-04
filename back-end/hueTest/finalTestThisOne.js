@@ -1,11 +1,15 @@
-var express = require('express');
+let express = require('express');
 var socket = require('socket.io');
 var five = require('johnny-five'),
 board = new five.Board();
 
 let Small = require('../FermataJS Markov/specials/Small');
+let Chord = require("../FermataJS Markov/specials/Chord");
+let Harmony = require("../FermataJS Markov/specials/Harmony");
+let Transpose = require("../FermataJS Markov/specials/Transpose");
+let Octave = require("../FermataJS Markov/specials/Octave");
 //import {Small} from '../FermataJS Markov/specials/Small';
-//import {Chord} from '../FermataJS Markov/specials/Chord';
+//import {Chord} from '../FermataJS Markov/specials/Chord.js';
 //import {Harmony} from '../FermataJS Markov/specials/Harmony';
 //import {Transpose} from '../FermataJS Markov/specials/Transpose';
 //import {Octave} from '../FermataJS Markov/specials/Octave';
