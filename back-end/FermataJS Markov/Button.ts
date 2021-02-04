@@ -7,6 +7,7 @@ import { Harmony } from './specials/Harmony.js';
 import { Octave } from './specials/Octave';
 
 export const soundplayer = require('sound-play');
+//export const soundfilesPath = './notes';
 export const soundfilesPath = 'C:/Users/pimto/Downloads/hf-january-master/january/assets/notes/';
 
 
