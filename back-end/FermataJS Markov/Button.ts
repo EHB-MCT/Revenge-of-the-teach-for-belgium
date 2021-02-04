@@ -133,12 +133,6 @@ function test(){
 	Note.lastRecorded = 'C4';
 	Mode.index = Math.floor(Math.random() * 4);
 	Mode.init();
-
-	Button.playNote();
-
-	setTimeout(Button.playNote, 5000);
-	setTimeout(Button.playChord, 5000);
-	//setTimeout(Harmony.onPress, 5000);
 }
 
 test();

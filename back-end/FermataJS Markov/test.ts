@@ -33,9 +33,8 @@ import {
 Note.lastRecorded = 'C4';
 Mode.index = Math.floor(Math.random() * 4);
 Mode.init();
-
-for (let i = 0; i < 10; i++) {
-    
+ 
+    Button.playChord();
     setTimeout(() => {
         console.log('Button playNote');
         Small.playNote();
@@ -55,5 +54,5 @@ for (let i = 0; i < 10; i++) {
         Octave.onPress();
     }, 12000);
     setTimeout(Chord.onPress, 25000);
-}
+
 

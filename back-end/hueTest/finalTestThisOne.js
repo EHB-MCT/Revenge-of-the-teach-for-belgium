@@ -26,7 +26,12 @@ let Octave = require("../FermataJS Markov/specials/Octave");
 //import {Octave} from '../FermataJS Markov/specials/Octave';
 
 
-let Chance = require('chance');
+let Chance = require('chance').Chance();
+
+
+const { Button } = require('../FermataJS Markov/Button');
+const { default: Mode } = require('../FermataJS Markov/music/Mode');
+const { Note } = require('../FermataJS Markov/music/Note');
 
 // Init variabelen
 var port = 5000;
@@ -36,35 +41,37 @@ var green = 50;
 var blue = 50;
 var timer = 30000;
 
-let useMarkov = false;
+let useMarkov = true;
 
 function chooseMarkovFunction(){
+  console.log(useMarkov);
   if (useMarkov == true){
+    console.log("choosing markov function");
     let weights = [88.5, 3.5, 3.5, 2, 0.5]; 
-    let markovFunction = Chance.weights(["Small", "Octave", "Harmony", "Chord", "Transpose"], weights);
+    let markovFunction = Chance.weighted(["Small", "Octave", "Harmony", "Chord", "Transpose"], weights);
     switch (markovFunction){
       case "Small":
-        Small.onPress();
+        Small.onPress;
         console.log('Generating small note')
         break;
   
       case "Octave":
-        Octave.onPress();
+        Octave.onPress;
         console.log('Generating octave')
         break;
   
       case "Harmony":
-        Harmony.onPress();
+        Harmony.onPress;
         console.log('Generating harmony')
         break;
   
       case "Chord":
-        Chord.onPress();
+        Chord.onPress;
         console.log('Generating chord')
         break;
   
       case "Transpose":
-        Transpose.onPress();
+        Transpose.onPress;
         console.log('Generating transposition')
         break;
     }
@@ -667,5 +674,12 @@ board.on('ready', function(){
       });*/
       
     });
-  
+    Note.lastAbsolute = "C4";
+    Mode.index = Math.floor(Math.random() * 4);
+
+    Mode.init();
+
+  chooseMarkovFunction();
 });
+
+chooseMarkovFunction();

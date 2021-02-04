@@ -18,12 +18,13 @@ var Button_1 = require("../Button");
 var Small = /** @class */ (function (_super) {
     __extends(Small, _super);
     function Small() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        return _super.call(this) || this;
     }
     Small.onPress = function () {
         //DRUK HIER MET ARDUINO EVENT OFZO
         Button_1.Button.playNote();
     };
+    ;
     return Small;
 }(Button_1.Button));
 exports.Small = Small;

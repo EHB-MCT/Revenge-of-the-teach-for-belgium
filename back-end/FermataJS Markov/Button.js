@@ -7,7 +7,7 @@ var Note_js_1 = require("./music/Note.js");
 var Mode_js_1 = require("./music/Mode.js");
 exports.soundplayer = require('sound-play');
 //export const soundfilesPath = './notes';
-exports.soundfilesPath = 'C:/Users/Nickname/Documents/School/2020-2021/Full Projects 3/Revenge-of-the-teach-for-belgium/back-end/FermataJS Markov/notes';
+exports.soundfilesPath = 'C:/Users/pimto/Downloads/hf-january-master/january/assets/notes/';
 var Button = /** @class */ (function () {
     function Button() {
         this.playsNote = false;
@@ -109,9 +109,5 @@ function test() {
     Note_js_1.Note.lastRecorded = 'C4';
     Mode_js_1.Mode.index = Math.floor(Math.random() * 4);
     Mode_js_1.Mode.init();
-    Button.playNote();
-    setTimeout(Button.playNote, 5000);
-    setTimeout(Button.playChord, 5000);
-    //setTimeout(Harmony.onPress, 5000);
 }
 test();
