@@ -6,6 +6,7 @@ var Key_js_1 = require("./music/Key.js");
 var Note_js_1 = require("./music/Note.js");
 var Mode_js_1 = require("./music/Mode.js");
 exports.soundplayer = require('sound-play');
+//export const soundfilesPath = './notes';
 exports.soundfilesPath = 'C:/Users/pimto/Downloads/hf-january-master/january/assets/notes/';
 var Button = /** @class */ (function () {
     function Button() {
