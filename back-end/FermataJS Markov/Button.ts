@@ -3,10 +3,11 @@ import {Key} from './music/Key.js';
 import {Note} from './music/Note.js';
 import {Mode} from './music/Mode.js';
 import { Small } from './specials/Small.js';
+import { Harmony } from './specials/Harmony.js';
+import { Octave } from './specials/Octave';
 
 export const soundplayer = require('sound-play');
 export const soundfilesPath = 'C:/Users/pimto/Downloads/hf-january-master/january/assets/notes/';
-
 
 
 export class Button {
@@ -24,34 +25,23 @@ export class Button {
 
     public static playNote(){
 		Button.generateNote();
-
     }
 
     public static play(options: Array<String>){
-
-		console.log(Button.noteAdjustments(options));
 		let noteName = Button.noteAdjustments(options);
-
 
 		soundplayer.play(`${soundfilesPath}${noteName}.wav`);
 		console.log(`${soundfilesPath} playing ${noteName}`)
-		console.log(noteName);
-
-
 	}
 	
 	public static playChord(){
 		let chordTones: Array<String> = Mode.current.chords[Math.floor(Math.random() * Mode.current.chords.length)];
 		console.log(`These are the chord tones: ${chordTones}`)
-
 		soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[0])}.wav`);
 		soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[1])}.wav`);
 		soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[2])}.wav`);
-
 		// If the chord is a seventh chord, push the 4th chord tone.
-
 		if (chordTones.length > 3 && Intervals.loadout.get(chordTones[3]) != null) {
-
 			soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[3])}.wav`);
 		}
 			
@@ -68,18 +58,13 @@ export class Button {
         let optionSets: Array<Array<String>>;
 
 		optionSets = Mode.current.logic;
-		console.log(optionSets)
-
         for (let j = 0; j < Intervals.DATABASE.length; j++) {
             if (Note.lastRecorded == Intervals.loadout.get(Intervals.DATABASE[j])){
-				console.log(Intervals.DATABASE[j]);
 				this.play(optionSets[j]);
 				console.log('generated note, playing note');
                 played = true;
             }
         }
-
-		console.log('generating note');
 		if (played = false){ 
 			this.play(optionSets[22]);
 			console.log('using generate note edge case')
@@ -88,7 +73,6 @@ export class Button {
 
 	//Edge cases and preventing chromatism hell
     private static noteAdjustments(options: Array<String>):String {
-
 			console.log('adjusting notes');
 			let note: any = "";
 			let random: number = 0;
@@ -98,8 +82,7 @@ export class Button {
 			note = Intervals.loadout.get(options[random]);
 			
 			// Halve Probability of Trills and Repeats
-			if (note == Note.secondToLastRecorded || note == Note.lastAbsolute)
-			{
+			if (note == Note.secondToLastRecorded || note == Note.lastAbsolute){
 				console.log("halvin probability of Trills and Repeats")
 				random = Math.random()* options.length - 1;
 				note = Intervals.loadout.get(options[random]);
@@ -128,13 +111,9 @@ export class Button {
 				note == Intervals.loadout.get("six3")) ) {
 
 			for (let desc in Intervals.loadout.keys()) {
-
 				if (note == Intervals.loadout.get(desc)) {
-
 					for (let j = 0; j < Intervals.DATABASE.length - 1; j++) {
-
 						if (Intervals.loadout.get(desc) == Intervals.DATABASE[j]) {
-
 							// change new note to be +/- 1 interval if the key just changed.
 							note = Intervals.loadout.get(Intervals.DATABASE[j + Math.random() < 0.5 ? -1 : 1]);
 							break;
@@ -142,30 +121,23 @@ export class Button {
 					}
 				}
 			}
-				
 			Key.justChanged = false;
 		}
-		
 		return note;
-			
-	
-		
 		}	
 }
 
 
 function test(){
 	Note.lastRecorded = 'C4';
-    //soundplayer.play(`${soundfilesPath}D3.wav`)
-    //soundplayer.play(`${soundfilesPath}B3.wav`)
 	Mode.index = Math.floor(Math.random() * 4);
 	Mode.init();
 
 	Button.playNote();
 
+	setTimeout(Button.playNote, 5000);
 	setTimeout(Button.playChord, 5000);
-	setTimeout(Button.play, 5000);
-	setTimeout(Button.playChord, 5000);
+	//setTimeout(Harmony.onPress, 5000);
 }
 
 test();

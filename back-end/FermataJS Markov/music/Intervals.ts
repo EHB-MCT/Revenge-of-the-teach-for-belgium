@@ -1,3 +1,4 @@
+import { Module } from "module";
 import { Key } from "./Key";
 import { Mode } from "./Mode";
 
@@ -11,7 +12,6 @@ export class Intervals {
     public static populate() {
         console.log("populating");
         if (Intervals.updated == false) {
-            console.log("updated is false");
             let modeOffset: number;
             console.log(`Current key: ${Key.current}`)
             console.log(`Current mode: ${Mode.DATABASE[Mode.index].name}`)
@@ -27,9 +27,7 @@ export class Intervals {
             for (let i = 0; i <= Intervals.DATABASE.length - 1; i++) {
                 let sparta = Key.DATABASE[Math.floor(Math.random() * 2)];
                 let athena = sparta[i + modeOffset];
-                Intervals.loadout.set(Intervals.DATABASE[i], athena);
-                
-                console.log(athena);
+                Intervals.loadout.set(Intervals.DATABASE[i], athena);                
             }
 
             Intervals.updated = true;

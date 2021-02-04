@@ -20,9 +20,6 @@ var Small = /** @class */ (function (_super) {
     function Small() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Small.prototype["new"] = function () {
-        // super.playsNote = true;
-    };
     Small.onPress = function () {
         //DRUK HIER MET ARDUINO EVENT OFZO
         Button_1.Button.playNote();
@@ -30,3 +27,4 @@ var Small = /** @class */ (function (_super) {
     return Small;
 }(Button_1.Button));
 exports.Small = Small;
+exports["default"] = Small;

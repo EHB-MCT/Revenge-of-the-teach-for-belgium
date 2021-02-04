@@ -3,6 +3,16 @@ var socket = require('socket.io');
 var five = require('johnny-five'),
 board = new five.Board();
 
+let Small = require('../FermataJS Markov/specials/Small');
+//import {Small} from '../FermataJS Markov/specials/Small';
+//import {Chord} from '../FermataJS Markov/specials/Chord';
+//import {Harmony} from '../FermataJS Markov/specials/Harmony';
+//import {Transpose} from '../FermataJS Markov/specials/Transpose';
+//import {Octave} from '../FermataJS Markov/specials/Octave';
+
+
+let Chance = require('chance');
+
 // Init variabelen
 var port = 5000;
 var cooldown = 1500;
@@ -11,7 +21,44 @@ var green = 50;
 var blue = 50;
 var timer = 30000;
 
-// Start alles als een Arduino bord gevonden wordt
+let useMarkov = false;
+
+function chooseMarkovFunction(){
+  if (useMarkov == true){
+    let weights = [88.5, 3.5, 3.5, 2, 0.5]; 
+    let markovFunction = Chance.weights(["Small", "Octave", "Harmony", "Chord", "Transpose"], weights);
+    switch (markovFunction){
+      case "Small":
+        Small.onPress();
+        console.log('Generating small note')
+        break;
+  
+      case "Octave":
+        Octave.onPress();
+        console.log('Generating octave')
+        break;
+  
+      case "Harmony":
+        Harmony.onPress();
+        console.log('Generating harmony')
+        break;
+  
+      case "Chord":
+        Chord.onPress();
+        console.log('Generating chord')
+        break;
+  
+      case "Transpose":
+        Transpose.onPress();
+        console.log('Generating transposition')
+        break;
+    }
+  }
+  else return;
+
+}
+
+// Start alles als een Arduino bord gevonden wordt.
 board.on('ready', function(){
   // App setup
   var app = express();
@@ -52,7 +99,7 @@ board.on('ready', function(){
           value: 4
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -79,7 +126,7 @@ board.on('ready', function(){
           value: 5
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -106,7 +153,7 @@ board.on('ready', function(){
           value: 6
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -133,7 +180,7 @@ board.on('ready', function(){
           value: 7
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -160,7 +207,7 @@ board.on('ready', function(){
           value: 8
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
 
@@ -188,7 +235,7 @@ board.on('ready', function(){
           value: 9
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -215,7 +262,7 @@ board.on('ready', function(){
           value: 10
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -241,7 +288,7 @@ board.on('ready', function(){
           value: 11
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -268,7 +315,7 @@ board.on('ready', function(){
           value: 12
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -295,7 +342,7 @@ board.on('ready', function(){
           value: 13
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -322,7 +369,7 @@ board.on('ready', function(){
           value: 14
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -349,7 +396,7 @@ board.on('ready', function(){
           value: 15
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -376,7 +423,7 @@ board.on('ready', function(){
           value: 16
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -403,7 +450,7 @@ board.on('ready', function(){
           value: 17
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -430,7 +477,7 @@ board.on('ready', function(){
           value: 18
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -457,7 +504,7 @@ board.on('ready', function(){
           value: 19
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -483,7 +530,7 @@ board.on('ready', function(){
           value: 20
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -509,7 +556,7 @@ board.on('ready', function(){
           value: 21
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -535,7 +582,7 @@ board.on('ready', function(){
           value: 22
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -561,7 +608,7 @@ board.on('ready', function(){
           value: 23
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });
@@ -587,7 +634,7 @@ board.on('ready', function(){
           value: 24
         });
         // Hier kunnen extra functies
-  
+        chooseMarkovFunction();
         //
       }
     });

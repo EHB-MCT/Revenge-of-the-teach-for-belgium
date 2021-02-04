@@ -17,11 +17,9 @@ var Button = /** @class */ (function () {
         Button.generateNote();
     };
     Button.play = function (options) {
-        console.log(Button.noteAdjustments(options));
         var noteName = Button.noteAdjustments(options);
         exports.soundplayer.play("" + exports.soundfilesPath + noteName + ".wav");
         console.log(exports.soundfilesPath + " playing " + noteName);
-        console.log(noteName);
     };
     Button.playChord = function () {
         var chordTones = Mode_js_1.Mode.current.chords[Math.floor(Math.random() * Mode_js_1.Mode.current.chords.length)];
@@ -40,16 +38,13 @@ var Button = /** @class */ (function () {
         var played = false;
         var optionSets;
         optionSets = Mode_js_1.Mode.current.logic;
-        console.log(optionSets);
         for (var j = 0; j < Intervals_js_1.Intervals.DATABASE.length; j++) {
             if (Note_js_1.Note.lastRecorded == Intervals_js_1.Intervals.loadout.get(Intervals_js_1.Intervals.DATABASE[j])) {
-                console.log(Intervals_js_1.Intervals.DATABASE[j]);
                 this.play(optionSets[j]);
                 console.log('generated note, playing note');
                 played = true;
             }
         }
-        console.log('generating note');
         if (played = false) {
             this.play(optionSets[22]);
             console.log('using generate note edge case');
@@ -111,11 +106,11 @@ var Button = /** @class */ (function () {
 exports.Button = Button;
 function test() {
     Note_js_1.Note.lastRecorded = 'C4';
-    //soundplayer.play(`${soundfilesPath}D3.wav`)
-    //soundplayer.play(`${soundfilesPath}B3.wav`)
     Mode_js_1.Mode.index = Math.floor(Math.random() * 4);
     Mode_js_1.Mode.init();
     Button.playNote();
-    setTimeout(Button.playChord, 10000);
+    setTimeout(Button.playNote, 5000);
+    setTimeout(Button.playChord, 5000);
+    //setTimeout(Harmony.onPress, 5000);
 }
 test();
