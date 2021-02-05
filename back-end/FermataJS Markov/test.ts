@@ -32,6 +32,7 @@ import {
 Note.lastRecorded = 'C3';
 Mode.index = Math.floor(Math.random() * 4);
 Mode.current = Mode.IONIAN;
+Note.lastOctave = 'C3';
 Mode.init();
  
     Button.playChord();
@@ -53,6 +54,5 @@ Mode.init();
         console.log('playing Octave');
         Octave.onPress();
     }, 12000);
-    setTimeout(Chord.onPress, 25000);
 
 
