@@ -7,8 +7,10 @@ import { Harmony } from './specials/Harmony.js';
 import { Octave } from './specials/Octave';
 
 export const soundplayer = require('sound-play');
-//export const soundfilesPath = './notes';
-export const soundfilesPath = 'C:/Users/pimto/Downloads/hf-january-master/january/assets/notes/';
+
+//This might be bugged in the module itself, absolute path works so far.
+//export const soundfilesPath = './notes/';
+export const soundfilesPath = 'C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/';
 
 
 export class Button {
@@ -59,7 +61,9 @@ export class Button {
         let optionSets: Array<Array<String>>;
 
 		optionSets = Mode.current.logic;
+		console.log(Intervals.loadout)
         for (let j = 0; j < Intervals.DATABASE.length; j++) {
+			console.log(`starting loop, current interation: ${j}`)
             if (Note.lastRecorded == Intervals.loadout.get(Intervals.DATABASE[j])){
 				this.play(optionSets[j]);
 				console.log('generated note, playing note');
@@ -85,7 +89,7 @@ export class Button {
 			// Halve Probability of Trills and Repeats
 			if (note == Note.secondToLastRecorded || note == Note.lastAbsolute){
 				console.log("halvin probability of Trills and Repeats")
-				random = Math.random()* options.length - 1;
+				random = Math.random()* options.length;
 				note = Intervals.loadout.get(options[random]);
 			}
 			
@@ -127,19 +131,4 @@ export class Button {
 		return note;
 		}	
 }
-
-
-function test(){
-	Note.lastRecorded = 'C4';
-	Mode.index = Math.floor(Math.random() * 4);
-	Mode.init();
-
-	Button.playNote();
-
-	setTimeout(Button.playNote, 5000);
-	setTimeout(Button.playChord, 5000);
-	//setTimeout(Harmony.onPress, 5000);
-}
-
-test();
 

@@ -1,36 +1,52 @@
-let express = require('express');
-var socket = require('socket.io');
+
 var five = require('johnny-five'),
 board = new five.Board();
 
-let Small = require('../FermataJS Markov/specials/Small');
-let Chord = require("../FermataJS Markov/specials/Chord");
-let Harmony = require("../FermataJS Markov/specials/Harmony");
-let Transpose = require("../FermataJS Markov/specials/Transpose");
-let Octave = require("../FermataJS Markov/specials/Octave");
-//import {Small} from '../FermataJS Markov/specials/Small';
-//import {Chord} from '../FermataJS Markov/specials/Chord.js';
-//import {Harmony} from '../FermataJS Markov/specials/Harmony';
-//import {Transpose} from '../FermataJS Markov/specials/Transpose';
-//import {Octave} from '../FermataJS Markov/specials/Octave';
+let RGBconverter = require('@q42philips/hue-color-converter')
+let fetch = require('node-fetch');
+
+const host = "http://192.168.1.100"; // IP adres Philips Hue bridge
+const username = "5Jgaedon0HXLnePLPgxWILxb42n5mcf08TRCsua7"; // Account ID op Philips Hue bridge
+const lampID1 = 4; // ID van de lamp die we willen besturen
+const lampID2 = 5;
+const url1 = `${host}/api/${username}/lights/${lampID1}/state`; // url om naar te fetchen om het licht aan te passen
+const url2 = `${host}/api/${username}/lights/${lampID2}/state`;
+
+let huexy;
+
+const  {Small} = require('../FermataJS Markov/specials/Small');
+const {Chord} = require("../FermataJS Markov/specials/Chord");
+const {Harmony} = require("../FermataJS Markov/specials/Harmony");
+const {Transpose} = require("../FermataJS Markov/specials/Transpose");
+const {Octave} = require("../FermataJS Markov/specials/Octave");
+
+let Chance = require('chance').Chance();
 
 
-let Chance = require('chance');
+const { default: Mode } = require('../FermataJS Markov/music/Mode');
+const { Note } = require('../FermataJS Markov/music/Note');
 
 // Init variabelen
 var port = 5000;
-var cooldown = 1500;
+var cooldown = 4000;
 var red = 50;
 var green = 50;
 var blue = 50;
 var timer = 30000;
 
-let useMarkov = false;
+Note.lastRecorded = 'C3';
+Mode.index = Math.floor(Math.random() * 4);
+Mode.current = Mode.IONIAN;
+Mode.init();
+
+let useMarkov = true;
 
 function chooseMarkovFunction(){
+  console.log(useMarkov);
   if (useMarkov == true){
+    console.log("choosing markov function");
     let weights = [88.5, 3.5, 3.5, 2, 0.5]; 
-    let markovFunction = Chance.weights(["Small", "Octave", "Harmony", "Chord", "Transpose"], weights);
+    let markovFunction = Chance.weighted(["Small", "Octave", "Harmony", "Chord", "Transpose"], weights);
     switch (markovFunction){
       case "Small":
         Small.onPress();
@@ -64,21 +80,7 @@ function chooseMarkovFunction(){
 
 // Start alles als een Arduino bord gevonden wordt.
 board.on('ready', function(){
-  // App setup
-  var app = express();
-  var server = app.listen(port, function(){
-    console.log("listening to requests on port " + port);
-  });
-
-  // Static files
-  app.use(express.static('public'));
-
-  // Socket setup
-  var io = socket(server);
-
-  // Button mapping zodra io connection gemaakt is
-  io.on('connection', function(socket){
-    console.log("made socket connection to " + socket.id);
+  
 
     // Button mapping
 
@@ -98,10 +100,10 @@ board.on('ready', function(){
         green+= 20;
         red -= 7;
         blue -= 7;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'green1',
           value: 4
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
@@ -125,10 +127,10 @@ board.on('ready', function(){
         green -= 15;
         red -= 15;
         blue -= 15;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'yellow1',
           value: 5
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
@@ -152,10 +154,10 @@ board.on('ready', function(){
         green -= 7;
         red -= 7;
         blue += 20;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'blue1',
           value: 6
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
@@ -179,10 +181,10 @@ board.on('ready', function(){
         green -= 7;
         red += 20;
         blue -= 7;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'red1',
           value: 7
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
@@ -206,10 +208,10 @@ board.on('ready', function(){
         green += 15;
         red += 15;
         blue += 15;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'white1',
           value: 8
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
@@ -217,7 +219,7 @@ board.on('ready', function(){
 
     });
 
-    // Groene button 22 -23
+    /*// Groene button 22 -23
     var greenB2 = new five.Button(22);
     var greenL2 = new five.Led(23);
     var green2on = true;
@@ -242,7 +244,7 @@ board.on('ready', function(){
         chooseMarkovFunction();
         //
       }
-    });
+    });*/
 
     // Gele button 24 - 25
     var yellowB2 = new five.Button(24);
@@ -261,15 +263,17 @@ board.on('ready', function(){
         green -= 15;
         red -= 15;
         blue -= 15;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'yellow2',
           value: 10
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
       }
     });
+
+    /*
     // Blauwe button 26 - 27
     var blueB2 = new five.Button(26);
     var blueL2 = new five.Led(27);
@@ -295,7 +299,7 @@ board.on('ready', function(){
         chooseMarkovFunction();
         //
       }
-    });
+    });*/
 
     // Rode button 28 - 29
     var redB2 = new five.Button(28);
@@ -314,17 +318,17 @@ board.on('ready', function(){
         green -= 7;
         red += 20;
         blue -= 7;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'red2',
           value: 12
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
       }
     });
 
-    // Witte button 30 - 31
+    /*// Witte button 30 - 31
     var whiteB2 = new five.Button(30);
     var whiteL2 = new five.Led(31);
     var white2on = true;
@@ -349,7 +353,7 @@ board.on('ready', function(){
         chooseMarkovFunction();
         //
       }
-    });
+    });*/
 
     // Groene button 32 - 33
     var greenB3 = new five.Button(32);
@@ -368,10 +372,10 @@ board.on('ready', function(){
         green += 20;
         red -= 7;
         blue -= 7;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'green3',
           value: 14
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
@@ -395,10 +399,10 @@ board.on('ready', function(){
         green -= 15;
         red -= 15;
         blue -= 15;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'yellow3',
           value: 15
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
@@ -422,10 +426,10 @@ board.on('ready', function(){
         green -= 7;
         red -= 7;
         blue += 20;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'blue3',
           value: 16
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
@@ -449,10 +453,10 @@ board.on('ready', function(){
         green -= 7;
         red += 20;
         blue -= 7;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'red3',
           value: 17
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
@@ -476,10 +480,10 @@ board.on('ready', function(){
         green += 15;
         red += 15;
         blue += 15;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'white3',
           value: 18
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
@@ -503,10 +507,10 @@ board.on('ready', function(){
         green += 20;
         red -= 7;
         blue -= 7;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'green4',
           value: 19
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
@@ -529,10 +533,10 @@ board.on('ready', function(){
         green -= 15;
         red -= 15;
         blue -= 15;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'yellow4',
           value: 20
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
@@ -555,10 +559,10 @@ board.on('ready', function(){
         green -= 7;
         red -= 7;
         blue += 20;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'blue4',
           value: 21
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
@@ -581,16 +585,16 @@ board.on('ready', function(){
         green -= 7;
         red += 20;
         blue -= 7;
-        io.sockets.emit('inputChange', {
+        /*io.sockets.emit('inputChange', {
           id: 'red4',
           value: 22
-        });
+        });*/
         // Hier kunnen extra functies
         chooseMarkovFunction();
         //
       }
     });
-    // Witte button 50 - 51
+    /*// Witte button 50 - 51
     var whiteB4 = new five.Button(50);
     var whiteL4 = new five.Button(51);
     var white4on = true;
@@ -615,8 +619,9 @@ board.on('ready', function(){
         chooseMarkovFunction();
         //
       }
-    });
-    // Witte button 52 - 53
+    });*/
+
+    /*// Witte button 52 - 53
     var whiteB5 = new five.Button(52);
     var whiteL5 = new five.Button(53);
     var white5on = true;
@@ -641,12 +646,34 @@ board.on('ready', function(){
         chooseMarkovFunction();
         //
       }
-    });
+    });*/
     // Mapping gedaan
     
     // Color fetch
-    board.loop(timer, {
+    board.loop(timer, () => {
       // Philips hue fetch
+
+      /*
+      huexy = RGBconverter(red%255, green%255, blue%255);
+      fetch(url1, {
+        method: 'PUT',
+        body: {
+          "on": true,
+          "xy": huexy
+        }
+      });
+
+      fetch(url2, {
+        method: 'PUT',
+        body: {
+          "on": true,
+          "xy": huexy
+        }
+      });*/
+      
     });
-  });
+    
 });
+
+
+  chooseMarkovFunction();

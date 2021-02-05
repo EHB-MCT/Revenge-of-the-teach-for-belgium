@@ -14,6 +14,7 @@ export class Octave extends Button{
 
         for (let i = 0; i < Note.DATABASE.length; i++) {
             if (Note.lastAbsolute == Note.DATABASE[i]) {
+                console.log('playing octave tone')
 				while (octaveTone == "" || octaveTone == null) octaveTone = Note.DATABASE[i + octaveDownorUp[Math.floor(Math.random() * octaveDownorUp.length)]];
 			}
         }

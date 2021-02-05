@@ -29,21 +29,21 @@ import {
     Chord
 } from './specials/Chord.js';
 
-
-Note.lastRecorded = 'C4';
+Note.lastRecorded = 'C3';
 Mode.index = Math.floor(Math.random() * 4);
+Mode.current = Mode.IONIAN;
+Note.lastOctave = 'C3';
 Mode.init();
-
-for (let i = 0; i < 10; i++) {
-    
+ 
+    Button.playChord();
     setTimeout(() => {
-        console.log('Button playNote');
+        console.log('Small playNote');
         Small.playNote();
     }, 3000);
     
     setTimeout(() => {
-        console.log('Button play chord');
-        Button.playChord();
+        console.log('Chord playChord');
+        Chord.onPress();
     }, 6000);
     
     setTimeout(() => {
@@ -54,6 +54,5 @@ for (let i = 0; i < 10; i++) {
         console.log('playing Octave');
         Octave.onPress();
     }, 12000);
-    setTimeout(Chord.onPress, 25000);
-}
+
 

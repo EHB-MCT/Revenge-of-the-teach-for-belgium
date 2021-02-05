@@ -30,6 +30,7 @@ var Octave = /** @class */ (function (_super) {
         var octaveDownorUp = [-12, 12];
         for (var i = 0; i < Note_1.Note.DATABASE.length; i++) {
             if (Note_1.Note.lastAbsolute == Note_1.Note.DATABASE[i]) {
+                console.log('playing octave tone');
                 while (octaveTone == "" || octaveTone == null)
                     octaveTone = Note_1.Note.DATABASE[i + octaveDownorUp[Math.floor(Math.random() * octaveDownorUp.length)]];
             }
