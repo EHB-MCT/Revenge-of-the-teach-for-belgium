@@ -54,11 +54,11 @@ const MAPPING_25 = {
     24: 24
 };
 
-const buttons_device = ['a', 's', 'd', 'f', 'j', 'k', 'l', ';', 'z', 'e', '§', '!', 't', 'y', 'u', 'i', "o", "p", "q", "w", ' x', 'c', 'v', '&', '$'];
+const buttons_device = ['a', 's', 'd', 'f', 'j', 'k', 'l', ';'];
 
 let octaves = 7;
-let num_buttons = 25;
-let button_mapping = MAPPING_25;
+let num_buttons = 8;
+let button_mapping = mapping_8;
 
 let keyWhitelist;
 let temperature = 0.25;

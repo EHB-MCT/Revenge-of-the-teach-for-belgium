@@ -27,7 +27,7 @@ const DATA_TIME_QUANTIZE_RATE = 31.25;
 const DATA_MAX_DISCRETE_TIMES = 32;
 const RNN_NLAYERS = 2;
 const RNN_NUNITS = 128;
-const NUM_BUTTONS = 25;
+const NUM_BUTTONS = 8;
 const NUM_PIANOKEYS = 88;
 
 /**
@@ -67,7 +67,7 @@ function sampleLogits(logits, temperature, seed) {
     throw new Error('Invalid temperature specified');
   }
 
-  let result = null;;
+  let result = null;
 
   if (temperature === 0) {
     result = tf.argMax(logits, 0);

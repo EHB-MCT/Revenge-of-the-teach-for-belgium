@@ -50,7 +50,7 @@ board.on('ready', () => {
        blue -= 7;
        io.sockets.emit('inputChange', {
          id: 'green1',
-         value: 4
+         value: 0
        });
        // Hier kunnen extra functies
  
@@ -77,7 +77,7 @@ board.on('ready', () => {
        blue -= 15;
        io.sockets.emit('inputChange', {
          id: 'yellow1',
-         value: 5
+         value: 1
        });
        // Hier kunnen extra functies
  
@@ -104,7 +104,7 @@ board.on('ready', () => {
        blue += 20;
        io.sockets.emit('inputChange', {
          id: 'blue1',
-         value: 6
+         value: 2
        });
        // Hier kunnen extra functies
  
@@ -131,7 +131,7 @@ board.on('ready', () => {
        blue -= 7;
        io.sockets.emit('inputChange', {
          id: 'red1',
-         value: 7
+         value: 3
        });
        // Hier kunnen extra functies
  
@@ -158,7 +158,7 @@ board.on('ready', () => {
        blue += 15;
        io.sockets.emit('inputChange', {
          id: 'white1',
-         value: 8
+         value: 4
        });
        // Hier kunnen extra functies
  
@@ -213,7 +213,7 @@ board.on('ready', () => {
        blue -= 15;
        io.sockets.emit('inputChange', {
          id: 'yellow2',
-         value: 10
+         value: 5
        });
        // Hier kunnen extra functies
  
@@ -267,7 +267,7 @@ board.on('ready', () => {
        blue -= 7;
        io.sockets.emit('inputChange', {
          id: 'red2',
-         value: 12
+         value: 6
        });
        // Hier kunnen extra functies
  
@@ -321,7 +321,7 @@ board.on('ready', () => {
        blue -= 7;
        io.sockets.emit('inputChange', {
          id: 'green3',
-         value: 14
+         value: 7
        });
        // Hier kunnen extra functies
  
@@ -348,7 +348,7 @@ board.on('ready', () => {
        blue -= 15;
        io.sockets.emit('inputChange', {
          id: 'yellow3',
-         value: 15
+         value: 0
        });
        // Hier kunnen extra functies
  
@@ -375,7 +375,7 @@ board.on('ready', () => {
        blue += 20;
        io.sockets.emit('inputChange', {
          id: 'blue3',
-         value: 16
+         value: 1
        });
        // Hier kunnen extra functies
  
@@ -402,7 +402,7 @@ board.on('ready', () => {
        blue -= 7;
        io.sockets.emit('inputChange', {
          id: 'red3',
-         value: 17
+         value: 2
        });
        // Hier kunnen extra functies
  
@@ -429,7 +429,7 @@ board.on('ready', () => {
        blue += 15;
        io.sockets.emit('inputChange', {
          id: 'white3',
-         value: 18
+         value: 3
        });
        // Hier kunnen extra functies
  
@@ -456,7 +456,7 @@ board.on('ready', () => {
        blue -= 7;
        io.sockets.emit('inputChange', {
          id: 'green4',
-         value: 19
+         value: 4
        });
        // Hier kunnen extra functies
  
@@ -484,7 +484,7 @@ board.on('ready', () => {
        blue -= 15;
        io.sockets.emit('inputChange', {
          id: 'yellow4',
-         value: 20
+         value: 5
        });
        // Hier kunnen extra functies
  
@@ -512,7 +512,7 @@ board.on('ready', () => {
        blue += 20;
        io.sockets.emit('inputChange', {
          id: 'blue4',
-         value: 21
+         value: 6
        });
        // Hier kunnen extra functies
  
@@ -540,7 +540,7 @@ board.on('ready', () => {
        blue -= 7;
        io.sockets.emit('inputChange', {
          id: 'red4',
-         value: 22
+         value: 7
        });
        // Hier kunnen extra functies
  
