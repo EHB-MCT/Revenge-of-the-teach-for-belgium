@@ -7,13 +7,14 @@ var Octave_1 = require("./specials/Octave");
 var Transpose_js_1 = require("./specials/Transpose.js");
 var Chord_js_1 = require("./specials/Chord.js");
 Note_js_1.Note.lastRecorded = 'C3';
+Note_js_1.Note.lastAbsolute = 'C3';
 Mode_js_1.Mode.index = Math.floor(Math.random() * 4);
 Mode_js_1.Mode.current = Mode_js_1.Mode.IONIAN;
 Note_js_1.Note.lastOctave = 'C3';
 Mode_js_1.Mode.init();
 setTimeout(function () {
     console.log('Small playNote');
-    Small_js_1.Small.playNote();
+    Small_js_1.Small.onPress();
 }, 3000);
 setTimeout(function () {
     console.log('Chord playChord');

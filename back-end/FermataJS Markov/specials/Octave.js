@@ -28,11 +28,14 @@ var Octave = /** @class */ (function (_super) {
     Octave.playOctave = function () {
         var octaveTone = "";
         var octaveDownorUp = [-12, 12];
+        console.log('starting octave loop');
         for (var i = 0; i < Note_1.Note.DATABASE.length; i++) {
             if (Note_1.Note.lastAbsolute == Note_1.Note.DATABASE[i]) {
                 console.log('playing octave tone');
-                while (octaveTone == "" || octaveTone == null)
-                    octaveTone = Note_1.Note.DATABASE[i + octaveDownorUp[Math.floor(Math.random() * octaveDownorUp.length)]];
+                while (octaveTone == "" || octaveTone == null) {
+                    octaveTone = Note_1.Note.DATABASE[i + octaveDownorUp[Math.floor(Math.random() * octaveDownorUp.length - 1)]];
+                    console.log(octaveTone);
+                }
             }
         }
         Button_1.load("" + Button_1.soundfilesPath + octaveTone + ".wav").then(Button_1.play);

@@ -14,11 +14,12 @@ export class Key{
 
 
     public static change(){
-
-        let newIndex: number = Math.random() * Key.DATABASE.length - 1;
+		
+		console.log(Key.index);
+        let newIndex: number = Math.floor(Math.random() * Key.DATABASE.length - 1);
 		
 		while (newIndex == Key.index)
-			newIndex = Math.random() * Key.DATABASE.length - 1;
+			newIndex = Math.floor(Math.random() * Key.DATABASE.length - 1);
 		
 		Key.index = newIndex;
 		Key.current = Key.DATABASE[Key.index];//Key.index

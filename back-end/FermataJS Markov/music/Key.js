@@ -6,9 +6,10 @@ var Key = /** @class */ (function () {
     function Key() {
     }
     Key.change = function () {
-        var newIndex = Math.random() * Key.DATABASE.length - 1;
+        console.log(Key.index);
+        var newIndex = Math.floor(Math.random() * Key.DATABASE.length - 1);
         while (newIndex == Key.index)
-            newIndex = Math.random() * Key.DATABASE.length - 1;
+            newIndex = Math.floor(Math.random() * Key.DATABASE.length - 1);
         Key.index = newIndex;
         Key.current = Key.DATABASE[Key.index]; //Key.index
         Intervals_1.Intervals.updated = false;

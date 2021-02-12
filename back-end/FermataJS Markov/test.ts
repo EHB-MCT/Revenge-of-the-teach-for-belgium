@@ -30,6 +30,7 @@ import {
 } from './specials/Chord.js';
 
 Note.lastRecorded = 'C3';
+Note.lastAbsolute = 'C3';
 Mode.index = Math.floor(Math.random() * 4);
 Mode.current = Mode.IONIAN;
 Note.lastOctave = 'C3';
@@ -37,7 +38,7 @@ Mode.init();
  
     setTimeout(() => {
         console.log('Small playNote');
-        Small.playNote();
+        Small.onPress();
     }, 3000);
     
     setTimeout(() => {

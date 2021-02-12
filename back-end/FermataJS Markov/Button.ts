@@ -36,12 +36,12 @@ export class Button {
 		//soundplayer.play(`${soundfilesPath}${noteName}.wav`);
 		//player(`${soundfilesPath}${noteName}.wav`).play();
 		load(`${soundfilesPath}${noteName}.wav`).then(play);
-		console.log(`${Key.current} ${Mode.current.name}, ${noteName}`)
+		console.log(`${Mode.current.name}, ${noteName}`)
 	}
 	
 	public static playChord(){
 		let chordTones: Array<String> = Mode.current.chords[Math.floor(Math.random() * Mode.current.chords.length)];
-		console.log(`These are the chord tones: ${chordTones}`);
+		console.log(`These are the chord tones: ${chordTones}`)
 		load(`${soundfilesPath}${Intervals.loadout.get(chordTones[0])}.wav`).then(play);
 		load(`${soundfilesPath}${Intervals.loadout.get(chordTones[1])}.wav`).then(play);
 		load(`${soundfilesPath}${Intervals.loadout.get(chordTones[2])}.wav`).then(play);
@@ -58,7 +58,7 @@ export class Button {
         let optionSets: Array<Array<String>>;
 
 		optionSets = Mode.current.logic;
-		console.log(Intervals.loadout)
+		//console.log(Intervals.loadout)
         for (let j = 0; j < Intervals.DATABASE.length; j++) {
             if (Note.lastRecorded == Intervals.loadout.get(Intervals.DATABASE[j])){
 				console.log(`current interation: ${j}`)

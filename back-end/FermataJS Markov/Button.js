@@ -26,7 +26,7 @@ var Button = /** @class */ (function () {
         //soundplayer.play(`${soundfilesPath}${noteName}.wav`);
         //player(`${soundfilesPath}${noteName}.wav`).play();
         exports.load("" + exports.soundfilesPath + noteName + ".wav").then(exports.play);
-        console.log(Key_js_1.Key.current + " " + Mode_js_1.Mode.current.name + ", " + noteName);
+        console.log(Mode_js_1.Mode.current.name + ", " + noteName);
     };
     Button.playChord = function () {
         var chordTones = Mode_js_1.Mode.current.chords[Math.floor(Math.random() * Mode_js_1.Mode.current.chords.length)];
@@ -44,7 +44,7 @@ var Button = /** @class */ (function () {
         var played = false;
         var optionSets;
         optionSets = Mode_js_1.Mode.current.logic;
-        console.log(Intervals_js_1.Intervals.loadout);
+        //console.log(Intervals.loadout)
         for (var j = 0; j < Intervals_js_1.Intervals.DATABASE.length; j++) {
             if (Note_js_1.Note.lastRecorded == Intervals_js_1.Intervals.loadout.get(Intervals_js_1.Intervals.DATABASE[j])) {
                 console.log("current interation: " + j);
