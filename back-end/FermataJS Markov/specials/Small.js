@@ -28,4 +28,4 @@ var Small = /** @class */ (function (_super) {
     return Small;
 }(Button_1.Button));
 exports.Small = Small;
-exports["default"] = Small;
+//export default Small;

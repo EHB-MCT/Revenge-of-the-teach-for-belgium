@@ -198,14 +198,16 @@ export class Mode {
 	public static change(modeIndex = -1){
 
 		if (modeIndex == -1){
+			console.log(modeIndex);
 		
 			let newIndex = Math.floor(Math.random()* Mode.DATABASE.length);
-
+			console.log(newIndex)
 			// Halve Probability of Mixolydian
 			if (newIndex == 3) newIndex = Math.floor(Math.random()* Mode.DATABASE.length);
 			while (newIndex == Mode.index){
 				newIndex = Math.floor(Math.random()* Mode.DATABASE.length);
 				Mode.index = newIndex;
+				console.log(Mode.index)
 			}
 		} else {
 			Mode.index = modeIndex;

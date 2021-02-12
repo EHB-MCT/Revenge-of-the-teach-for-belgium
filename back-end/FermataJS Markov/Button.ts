@@ -2,17 +2,16 @@ import {Intervals} from './music/Intervals.js';
 import {Key} from './music/Key.js';
 import {Note} from './music/Note.js';
 import {Mode} from './music/Mode.js';
-import { Small } from './specials/Small.js';
-import { Harmony } from './specials/Harmony.js';
-import { Octave } from './specials/Octave';
 
 //export const soundplayer = require('sound-play');
-export const Sound = require('node-aplay');
+//export const player = require('play-sound');
+export const play = require('audio-play');
+export const load = require('audio-loader');
+
 
 //This might be bugged in the module itself, absolute path works so far.
 //export const soundfilesPath = './notes/';
-export const soundfilesPath = 'back-end/FermataJS Markov/notes/';
-
+export const soundfilesPath = './notes/';
 
 export class Button {
     
@@ -35,25 +34,21 @@ export class Button {
 		let noteName = Button.noteAdjustments(options);
 
 		//soundplayer.play(`${soundfilesPath}${noteName}.wav`);
-		new Sound(`${soundfilesPath}${noteName}.wav`).play();
-		console.log(`${Key.current[0]} ${Mode.current.name}, ${noteName}`)
+		//player(`${soundfilesPath}${noteName}.wav`).play();
+		load(`${soundfilesPath}${noteName}.wav`).then(play);
+		console.log(`${Key.current} ${Mode.current.name}, ${noteName}`)
 	}
 	
 	public static playChord(){
 		let chordTones: Array<String> = Mode.current.chords[Math.floor(Math.random() * Mode.current.chords.length)];
-		console.log(`These are the chord tones: ${chordTones}`)
-		new Sound.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[0])}.wav`);
-		new Sound.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[1])}.wav`);
-		new Sound.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[2])}.wav`);
+		console.log(`These are the chord tones: ${chordTones}`);
+		load(`${soundfilesPath}${Intervals.loadout.get(chordTones[0])}.wav`).then(play);
+		load(`${soundfilesPath}${Intervals.loadout.get(chordTones[1])}.wav`).then(play);
+		load(`${soundfilesPath}${Intervals.loadout.get(chordTones[2])}.wav`).then(play);
 		// If the chord is a seventh chord, push the 4th chord tone.
 		if (chordTones.length > 3 && Intervals.loadout.get(chordTones[3]) != null) {
-			new Sound.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[3])}.wav`);
+			load(`${soundfilesPath}${Intervals.loadout.get(chordTones[3])}.wav`).then(play);
 		}
-			
-
-
-	//TODO
-
 	}
 
     public static generateNote(){
@@ -65,8 +60,8 @@ export class Button {
 		optionSets = Mode.current.logic;
 		console.log(Intervals.loadout)
         for (let j = 0; j < Intervals.DATABASE.length; j++) {
-			console.log(`starting loop, current interation: ${j}`)
             if (Note.lastRecorded == Intervals.loadout.get(Intervals.DATABASE[j])){
+				console.log(`current interation: ${j}`)
 				this.play(optionSets[j]);
 				console.log('generated note, playing note');
                 played = true;

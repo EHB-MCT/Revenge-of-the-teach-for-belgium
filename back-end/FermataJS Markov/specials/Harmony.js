@@ -77,7 +77,7 @@ var Harmony = /** @class */ (function (_super) {
             choices = [i.get("thr3"), i.get("fiv3")];
         harmonyTone = Math.floor(Math.random() * choices.length);
         var harmony;
-        harmony = new Button_2.Sound.play(harmonyTone);
+        harmony = Button_2.load("" + Button_1.soundfilesPath + harmonyTone + ".wav").then(Button_2.play);
         Note_1.Note.lastHarmony = harmonyTone;
     };
     return Harmony;

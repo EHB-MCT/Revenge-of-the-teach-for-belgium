@@ -1,15 +1,17 @@
 "use strict";
 exports.__esModule = true;
-exports.Button = exports.soundfilesPath = exports.Sound = void 0;
+exports.Button = exports.soundfilesPath = exports.load = exports.play = void 0;
 var Intervals_js_1 = require("./music/Intervals.js");
 var Key_js_1 = require("./music/Key.js");
 var Note_js_1 = require("./music/Note.js");
 var Mode_js_1 = require("./music/Mode.js");
 //export const soundplayer = require('sound-play');
-exports.Sound = require('node-aplay');
+//export const player = require('play-sound');
+exports.play = require('audio-play');
+exports.load = require('audio-loader');
 //This might be bugged in the module itself, absolute path works so far.
 //export const soundfilesPath = './notes/';
-exports.soundfilesPath = 'back-end/FermataJS Markov/notes/';
+exports.soundfilesPath = './notes/';
 var Button = /** @class */ (function () {
     function Button() {
         this.playsNote = false;
@@ -22,20 +24,20 @@ var Button = /** @class */ (function () {
     Button.play = function (options) {
         var noteName = Button.noteAdjustments(options);
         //soundplayer.play(`${soundfilesPath}${noteName}.wav`);
-        new exports.Sound("" + exports.soundfilesPath + noteName + ".wav").play();
-        console.log(Key_js_1.Key.current[0] + " " + Mode_js_1.Mode.current.name + ", " + noteName);
+        //player(`${soundfilesPath}${noteName}.wav`).play();
+        exports.load("" + exports.soundfilesPath + noteName + ".wav").then(exports.play);
+        console.log(Key_js_1.Key.current + " " + Mode_js_1.Mode.current.name + ", " + noteName);
     };
     Button.playChord = function () {
         var chordTones = Mode_js_1.Mode.current.chords[Math.floor(Math.random() * Mode_js_1.Mode.current.chords.length)];
         console.log("These are the chord tones: " + chordTones);
-        new exports.Sound.play("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[0]) + ".wav");
-        new exports.Sound.play("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[1]) + ".wav");
-        new exports.Sound.play("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[2]) + ".wav");
+        exports.load("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[0]) + ".wav").then(exports.play);
+        exports.load("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[1]) + ".wav").then(exports.play);
+        exports.load("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[2]) + ".wav").then(exports.play);
         // If the chord is a seventh chord, push the 4th chord tone.
         if (chordTones.length > 3 && Intervals_js_1.Intervals.loadout.get(chordTones[3]) != null) {
-            new exports.Sound.play("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[3]) + ".wav");
+            exports.load("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[3]) + ".wav").then(exports.play);
         }
-        //TODO
     };
     Button.generateNote = function () {
         console.log('starting GenerateNote');
@@ -44,8 +46,8 @@ var Button = /** @class */ (function () {
         optionSets = Mode_js_1.Mode.current.logic;
         console.log(Intervals_js_1.Intervals.loadout);
         for (var j = 0; j < Intervals_js_1.Intervals.DATABASE.length; j++) {
-            console.log("starting loop, current interation: " + j);
             if (Note_js_1.Note.lastRecorded == Intervals_js_1.Intervals.loadout.get(Intervals_js_1.Intervals.DATABASE[j])) {
+                console.log("current interation: " + j);
                 this.play(optionSets[j]);
                 console.log('generated note, playing note');
                 played = true;

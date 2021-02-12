@@ -8,13 +8,16 @@ var Mode = /** @class */ (function () {
     Mode.change = function (modeIndex) {
         if (modeIndex === void 0) { modeIndex = -1; }
         if (modeIndex == -1) {
+            console.log(modeIndex);
             var newIndex = Math.floor(Math.random() * Mode.DATABASE.length);
+            console.log(newIndex);
             // Halve Probability of Mixolydian
             if (newIndex == 3)
                 newIndex = Math.floor(Math.random() * Mode.DATABASE.length);
             while (newIndex == Mode.index) {
                 newIndex = Math.floor(Math.random() * Mode.DATABASE.length);
                 Mode.index = newIndex;
+                console.log(Mode.index);
             }
         }
         else {

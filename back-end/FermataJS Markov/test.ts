@@ -35,7 +35,6 @@ Mode.current = Mode.IONIAN;
 Note.lastOctave = 'C3';
 Mode.init();
  
-    Button.playChord();
     setTimeout(() => {
         console.log('Small playNote');
         Small.playNote();

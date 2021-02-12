@@ -12,4 +12,4 @@ export class Small extends Button {
 
 }
 
-export default Small;
+//export default Small;

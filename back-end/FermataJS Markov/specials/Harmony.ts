@@ -1,7 +1,7 @@
-import { Button } from "../Button";
+import { Button, soundfilesPath } from "../Button";
 import {Intervals} from '../music/Intervals';
 import {Note} from '../music/Note';
-import {Sound} from '../Button';
+import {load, play} from '../Button';
 
 export class Harmony extends Button{
 
@@ -42,8 +42,7 @@ export class Harmony extends Button{
 		harmonyTone = Math.floor(Math.random() * choices.length);
 
 		let harmony: String;	
-		harmony = new Sound.play(harmonyTone);
-		
+		harmony = load(`${soundfilesPath}${harmonyTone}.wav`).then(play);
 		Note.lastHarmony = harmonyTone;
 	}
 }
