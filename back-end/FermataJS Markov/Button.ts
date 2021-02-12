@@ -7,10 +7,11 @@ import { Harmony } from './specials/Harmony.js';
 import { Octave } from './specials/Octave';
 
 export const soundplayer = require('sound-play');
+let Sound = require('node-aplay');
 
 //This might be bugged in the module itself, absolute path works so far.
 //export const soundfilesPath = './notes/';
-export const soundfilesPath = 'C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/';
+export const soundfilesPath = 'back-end/FermataJS Markov/notes/';
 
 
 export class Button {
@@ -33,8 +34,9 @@ export class Button {
     public static play(options: Array<String>){
 		let noteName = Button.noteAdjustments(options);
 
-		soundplayer.play(`${soundfilesPath}${noteName}.wav`);
-		console.log(`${soundfilesPath} playing ${noteName}`)
+		//soundplayer.play(`${soundfilesPath}${noteName}.wav`);
+		new Sound(`${soundfilesPath}${noteName}.wav`).play();
+		console.log(`${Key.current[0]} ${Mode.current.name}, ${noteName}`)
 	}
 	
 	public static playChord(){
