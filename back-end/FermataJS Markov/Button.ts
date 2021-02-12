@@ -6,8 +6,8 @@ import { Small } from './specials/Small.js';
 import { Harmony } from './specials/Harmony.js';
 import { Octave } from './specials/Octave';
 
-export const soundplayer = require('sound-play');
-let Sound = require('node-aplay');
+//export const soundplayer = require('sound-play');
+export const Sound = require('node-aplay');
 
 //This might be bugged in the module itself, absolute path works so far.
 //export const soundfilesPath = './notes/';
@@ -42,12 +42,12 @@ export class Button {
 	public static playChord(){
 		let chordTones: Array<String> = Mode.current.chords[Math.floor(Math.random() * Mode.current.chords.length)];
 		console.log(`These are the chord tones: ${chordTones}`)
-		soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[0])}.wav`);
-		soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[1])}.wav`);
-		soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[2])}.wav`);
+		new Sound.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[0])}.wav`);
+		new Sound.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[1])}.wav`);
+		new Sound.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[2])}.wav`);
 		// If the chord is a seventh chord, push the 4th chord tone.
 		if (chordTones.length > 3 && Intervals.loadout.get(chordTones[3]) != null) {
-			soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[3])}.wav`);
+			new Sound.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[3])}.wav`);
 		}
 			
 

@@ -1,14 +1,15 @@
 "use strict";
 exports.__esModule = true;
-exports.Button = exports.soundfilesPath = exports.soundplayer = void 0;
+exports.Button = exports.soundfilesPath = exports.Sound = void 0;
 var Intervals_js_1 = require("./music/Intervals.js");
 var Key_js_1 = require("./music/Key.js");
 var Note_js_1 = require("./music/Note.js");
 var Mode_js_1 = require("./music/Mode.js");
-exports.soundplayer = require('sound-play');
+//export const soundplayer = require('sound-play');
+exports.Sound = require('node-aplay');
 //This might be bugged in the module itself, absolute path works so far.
 //export const soundfilesPath = './notes/';
-exports.soundfilesPath = 'C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/';
+exports.soundfilesPath = 'back-end/FermataJS Markov/notes/';
 var Button = /** @class */ (function () {
     function Button() {
         this.playsNote = false;
@@ -20,18 +21,19 @@ var Button = /** @class */ (function () {
     };
     Button.play = function (options) {
         var noteName = Button.noteAdjustments(options);
-        exports.soundplayer.play("" + exports.soundfilesPath + noteName + ".wav");
-        console.log(exports.soundfilesPath + " playing " + noteName);
+        //soundplayer.play(`${soundfilesPath}${noteName}.wav`);
+        new exports.Sound("" + exports.soundfilesPath + noteName + ".wav").play();
+        console.log(Key_js_1.Key.current[0] + " " + Mode_js_1.Mode.current.name + ", " + noteName);
     };
     Button.playChord = function () {
         var chordTones = Mode_js_1.Mode.current.chords[Math.floor(Math.random() * Mode_js_1.Mode.current.chords.length)];
         console.log("These are the chord tones: " + chordTones);
-        exports.soundplayer.play("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[0]) + ".wav");
-        exports.soundplayer.play("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[1]) + ".wav");
-        exports.soundplayer.play("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[2]) + ".wav");
+        new exports.Sound.play("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[0]) + ".wav");
+        new exports.Sound.play("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[1]) + ".wav");
+        new exports.Sound.play("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[2]) + ".wav");
         // If the chord is a seventh chord, push the 4th chord tone.
         if (chordTones.length > 3 && Intervals_js_1.Intervals.loadout.get(chordTones[3]) != null) {
-            exports.soundplayer.play("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[3]) + ".wav");
+            new exports.Sound.play("" + exports.soundfilesPath + Intervals_js_1.Intervals.loadout.get(chordTones[3]) + ".wav");
         }
         //TODO
     };
