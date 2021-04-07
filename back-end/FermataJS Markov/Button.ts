@@ -7,6 +7,20 @@ import { Harmony } from './specials/Harmony.js';
 import { Octave } from './specials/Octave';
 
 export const soundplayer = require('sound-play');
+export const JZZ = require('jzz');
+require("jzz-midi-smf")(JZZ);
+
+
+export async function playMIDI(note: any) {
+    var midi = await JZZ();
+    var port = await midi.openMidiOut();
+    await port.noteOn(0, note, 127);
+    await port.wait(5000);
+    await port.noteOff(0, note);
+    await port.close();
+    console.log('done!');
+}
+
 
 //This might be bugged in the module itself, absolute path works so far.
 //export const soundfilesPath = './notes/';
@@ -32,20 +46,20 @@ export class Button {
 
     public static play(options: Array<String>){
 		let noteName = Button.noteAdjustments(options);
-
-		soundplayer.play(`${soundfilesPath}${noteName}.wav`);
+		playMIDI(noteName)
+		//soundplayer.play(`${soundfilesPath}${noteName}.wav`);
 		console.log(`${soundfilesPath} playing ${noteName}`)
 	}
 	
 	public static playChord(){
 		let chordTones: Array<String> = Mode.current.chords[Math.floor(Math.random() * Mode.current.chords.length)];
 		console.log(`These are the chord tones: ${chordTones}`)
-		soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[0])}.wav`);
-		soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[1])}.wav`);
-		soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[2])}.wav`);
+		playMIDI(Intervals.loadout.get(chordTones[0]));
+		playMIDI(Intervals.loadout.get(chordTones[1]));
+		playMIDI(Intervals.loadout.get(chordTones[2]));
 		// If the chord is a seventh chord, push the 4th chord tone.
 		if (chordTones.length > 3 && Intervals.loadout.get(chordTones[3]) != null) {
-			soundplayer.play(`${soundfilesPath}${Intervals.loadout.get(chordTones[3])}.wav`);
+			playMIDI(Intervals.loadout.get(chordTones[3]));
 		}
 			
 

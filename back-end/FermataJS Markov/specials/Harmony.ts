@@ -1,7 +1,6 @@
-import { Button } from "../Button";
+import { Button, playMIDI } from "../Button";
 import {Intervals} from '../music/Intervals';
 import {Note} from '../music/Note';
-import {soundplayer} from '../Button';
 
 export class Harmony extends Button{
 
@@ -41,8 +40,8 @@ export class Harmony extends Button{
 
 		harmonyTone = Math.floor(Math.random() * choices.length);
 
-		let harmony: String;	
-		harmony = soundplayer.play(harmonyTone);
+		let harmony: any;	
+		harmony = playMIDI(harmonyTone);
 		
 		Note.lastHarmony = harmonyTone;
 	}

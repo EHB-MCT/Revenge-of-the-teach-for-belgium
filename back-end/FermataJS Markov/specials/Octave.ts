@@ -1,4 +1,4 @@
-import { Button, soundplayer, soundfilesPath } from "../Button";
+import { Button, soundplayer, soundfilesPath, playMIDI } from "../Button";
 import { Note } from "../music/Note";
 
 export class Octave extends Button{
@@ -18,7 +18,7 @@ export class Octave extends Button{
 				while (octaveTone == "" || octaveTone == null) octaveTone = Note.DATABASE[i + octaveDownorUp[Math.floor(Math.random() * octaveDownorUp.length)]];
 			}
         }
-        soundplayer.play(`${soundfilesPath}${octaveTone}.wav`)
+        playMIDI(octaveTone);
         Note.lastOctave = octaveTone;
     }   
 }

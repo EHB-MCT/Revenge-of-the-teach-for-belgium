@@ -29,4 +29,3 @@ setTimeout(function () {
     console.log('playing Octave');
     Octave_1.Octave.onPress();
 }, 12000);
-setTimeout(Chord_js_1.Chord.onPress, 25000);
