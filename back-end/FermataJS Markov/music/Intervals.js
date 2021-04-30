@@ -22,15 +22,15 @@ var Intervals = /** @class */ (function () {
             }
             Intervals.loadout = new Map();
             for (var i = 0; i <= Intervals.DATABASE.length - 1; i++) {
-                var sparta = Key_1.Key.DATABASE[Math.floor(Math.random() * 2)];
-                var athena = sparta[i + modeOffset];
-                Intervals.loadout.set(Intervals.DATABASE[i], athena);
+                var offset = Key_1.Key.DATABASE[Math.floor(Math.random() * 2)];
+                var newLoadout = offset[i + modeOffset];
+                Intervals.loadout.set(Intervals.DATABASE[i], newLoadout);
             }
             Intervals.updated = true;
             console.log(Intervals.loadout);
         }
         else
-            return;
+            return Intervals.loadout;
     };
     Intervals.DATABASE = ["one1", "two1", "thr1", "for1", "fiv1", "six1", "sev1", "one2", "two2", "thr2", "for2", "fiv2", "six2", "sev2", "one3", "two3", "thr3", "for3", "fiv3", "six3", "sev3", "one4"];
     Intervals.updated = false;

@@ -23,7 +23,7 @@
     "node-fetch": "^2.6.1",
     "socket.io": "^3.1.0",
     "sound-play": "^1.1.0",
-    "webmidi": "^2.5.2"
+    "webmidi": "^3.0.0-alpha.5"
   },
   "devDependencies": {
     "@types/node": "^14.14.22",

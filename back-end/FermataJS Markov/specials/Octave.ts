@@ -1,4 +1,4 @@
-import { Button, soundplayer, soundfilesPath, playMIDI } from "../Button";
+import { Button, playMIDI } from "../Button";
 import { Note } from "../music/Note";
 
 export class Octave extends Button{

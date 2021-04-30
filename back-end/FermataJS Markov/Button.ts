@@ -11,22 +11,16 @@ export const JZZ = require('jzz');
 require("jzz-midi-smf")(JZZ);
 
 
+const {WebMidi} = require("webmidi");
 export async function playMIDI(note: any) {
     var midi = await JZZ();
     var port = await midi.openMidiOut();
     await port.noteOn(0, note, 127);
-    await port.wait(5000);
+    await port.wait(2000);
     await port.noteOff(0, note);
     await port.close();
-    console.log('done!');
+    console.log('played:', note);
 }
-
-
-//This might be bugged in the module itself, absolute path works so far.
-//export const soundfilesPath = './notes/';
-export const soundfilesPath = 'C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/';
-
-
 export class Button {
     
 	
@@ -47,8 +41,6 @@ export class Button {
     public static play(options: Array<String>){
 		let noteName = Button.noteAdjustments(options);
 		playMIDI(noteName)
-		//soundplayer.play(`${soundfilesPath}${noteName}.wav`);
-		console.log(`${soundfilesPath} playing ${noteName}`)
 	}
 	
 	public static playChord(){
@@ -77,7 +69,6 @@ export class Button {
 		optionSets = Mode.current.logic;
 		console.log(Intervals.loadout)
         for (let j = 0; j < Intervals.DATABASE.length; j++) {
-			console.log(`starting loop, current interation: ${j}`)
             if (Note.lastRecorded == Intervals.loadout.get(Intervals.DATABASE[j])){
 				this.play(optionSets[j]);
 				console.log('generated note, playing note');

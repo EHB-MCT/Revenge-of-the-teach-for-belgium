@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.Button = exports.soundfilesPath = exports.playMIDI = exports.JZZ = exports.soundplayer = void 0;
+exports.Button = exports.playMIDI = exports.JZZ = exports.soundplayer = void 0;
 var Intervals_js_1 = require("./music/Intervals.js");
 var Key_js_1 = require("./music/Key.js");
 var Note_js_1 = require("./music/Note.js");
@@ -44,6 +44,7 @@ var Mode_js_1 = require("./music/Mode.js");
 exports.soundplayer = require('sound-play');
 exports.JZZ = require('jzz');
 require("jzz-midi-smf")(exports.JZZ);
+var WebMidi = require("webmidi").WebMidi;
 function playMIDI(note) {
     return __awaiter(this, void 0, void 0, function () {
         var midi, port;
@@ -58,7 +59,7 @@ function playMIDI(note) {
                     return [4 /*yield*/, port.noteOn(0, note, 127)];
                 case 3:
                     _a.sent();
-                    return [4 /*yield*/, port.wait(5000)];
+                    return [4 /*yield*/, port.wait(2000)];
                 case 4:
                     _a.sent();
                     return [4 /*yield*/, port.noteOff(0, note)];
@@ -67,16 +68,13 @@ function playMIDI(note) {
                     return [4 /*yield*/, port.close()];
                 case 6:
                     _a.sent();
-                    console.log('done!');
+                    console.log('played:', note);
                     return [2 /*return*/];
             }
         });
     });
 }
 exports.playMIDI = playMIDI;
-//This might be bugged in the module itself, absolute path works so far.
-//export const soundfilesPath = './notes/';
-exports.soundfilesPath = 'C:/Users/Wafflemancer/Downloads/hf-january-master/january/assets/notes/';
 var Button = /** @class */ (function () {
     function Button() {
         this.playsNote = false;
@@ -89,8 +87,6 @@ var Button = /** @class */ (function () {
     Button.play = function (options) {
         var noteName = Button.noteAdjustments(options);
         playMIDI(noteName);
-        //soundplayer.play(`${soundfilesPath}${noteName}.wav`);
-        console.log(exports.soundfilesPath + " playing " + noteName);
     };
     Button.playChord = function () {
         var chordTones = Mode_js_1.Mode.current.chords[Math.floor(Math.random() * Mode_js_1.Mode.current.chords.length)];
@@ -111,7 +107,6 @@ var Button = /** @class */ (function () {
         optionSets = Mode_js_1.Mode.current.logic;
         console.log(Intervals_js_1.Intervals.loadout);
         for (var j = 0; j < Intervals_js_1.Intervals.DATABASE.length; j++) {
-            console.log("starting loop, current interation: " + j);
             if (Note_js_1.Note.lastRecorded == Intervals_js_1.Intervals.loadout.get(Intervals_js_1.Intervals.DATABASE[j])) {
                 this.play(optionSets[j]);
                 console.log('generated note, playing note');

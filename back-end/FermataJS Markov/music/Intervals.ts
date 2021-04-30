@@ -25,14 +25,14 @@ export class Intervals {
 
             Intervals.loadout = new Map();
             for (let i = 0; i <= Intervals.DATABASE.length - 1; i++) {
-                let sparta = Key.DATABASE[Math.floor(Math.random() * 2)];
-                let athena = sparta[i + modeOffset];
-                Intervals.loadout.set(Intervals.DATABASE[i], athena);                
+                let offset = Key.DATABASE[Math.floor(Math.random() * 2)];
+                let newLoadout = offset[i + modeOffset];
+                Intervals.loadout.set(Intervals.DATABASE[i], newLoadout);                
             }
 
             Intervals.updated = true;
             console.log(Intervals.loadout);
         }
-        else return;
+        else return Intervals.loadout;
     }
 }
