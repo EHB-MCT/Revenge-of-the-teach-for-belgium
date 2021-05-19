@@ -1,4 +1,4 @@
-import { Button, playMIDI } from "../Button";
+import { Button } from "../Button";
 import { Note } from "../music/Note";
 
 export class Octave extends Button{
@@ -18,7 +18,7 @@ export class Octave extends Button{
 				while (octaveTone == "" || octaveTone == null) octaveTone = Note.DATABASE[i + octaveDownorUp[Math.floor(Math.random() * octaveDownorUp.length)]];
 			}
         }
-        playMIDI(octaveTone);
+        Button.MIDIplay(octaveTone);
         Note.lastOctave = octaveTone;
     }   
 }

@@ -6,13 +6,10 @@ import { Small } from './specials/Small.js';
 import { Harmony } from './specials/Harmony.js';
 import { Octave } from './specials/Octave';
 
-export const soundplayer = require('sound-play');
+/* export const soundplayer = require('sound-play');
 export const JZZ = require('jzz');
 require("jzz-midi-smf")(JZZ);
-
-
-const {WebMidi} = require("webmidi");
-export async function playMIDI(note: any) {
+export async function playJZZMIDI(note: any) {
     var midi = await JZZ();
     var port = await midi.openMidiOut();
     await port.noteOn(0, note, 127);
@@ -20,10 +17,24 @@ export async function playMIDI(note: any) {
     await port.noteOff(0, note);
     await port.close();
     console.log('played:', note);
-}
+} */
+
+
+let {WebMidi}: any = require("webmidi");
+
+
+
+
+
+
+
+
+//export let MIDIplay = (note: any) => WebMidi.getOutputByName("toKeyscape").channels[1].playNote(note, {duration: 10000});
+
 export class Button {
-    
+	WebMidi = WebMidi.enable().catch((err: any) => console.log(err));
 	
+	public static MIDIplay = (note: any) => WebMidi.getOutputByName("toKeyscape").channels[1].playNote(note, {duration: 10000});
 	public playsNote: Boolean = false;
 	public noteName: String = 'n/a';
 
@@ -40,19 +51,25 @@ export class Button {
 
     public static play(options: Array<String>){
 		let noteName = Button.noteAdjustments(options);
-		playMIDI(noteName)
+		Button.MIDIplay(noteName);
+		//playJZZMIDI(noteName)
 	}
 	
 	public static playChord(){
-		let chordTones: Array<String> = Mode.current.chords[Math.floor(Math.random() * Mode.current.chords.length)];
+		let chordTones: any = Mode.current.chords[Math.floor(Math.random() * Mode.current.chords.length)];
 		console.log(`These are the chord tones: ${chordTones}`)
-		playMIDI(Intervals.loadout.get(chordTones[0]));
-		playMIDI(Intervals.loadout.get(chordTones[1]));
-		playMIDI(Intervals.loadout.get(chordTones[2]));
+		Button.MIDIplay(Intervals.loadout.get(chordTones))
+
+
+		//playJZZMIDI(Intervals.loadout.get(chordTones[0]));
+		//playJZZMIDI(Intervals.loadout.get(chordTones[1]));
+		//playJZZMIDI(Intervals.loadout.get(chordTones[2]));
 		// If the chord is a seventh chord, push the 4th chord tone.
-		if (chordTones.length > 3 && Intervals.loadout.get(chordTones[3]) != null) {
-			playMIDI(Intervals.loadout.get(chordTones[3]));
-		}
+		//if (chordTones.length > 3 && Intervals.loadout.get(chordTones[3]) != null) {
+
+
+			//playJZZMIDI(Intervals.loadout.get(chordTones[3]));
+		//}
 			
 
 
@@ -134,6 +151,8 @@ export class Button {
 			Key.justChanged = false;
 		}
 		return note;
-		}	
+		}
+		
+		
 }
 

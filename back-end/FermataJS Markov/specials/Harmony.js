@@ -76,7 +76,7 @@ var Harmony = /** @class */ (function (_super) {
             choices = [i.get("thr3"), i.get("fiv3")];
         harmonyTone = Math.floor(Math.random() * choices.length);
         var harmony;
-        harmony = Button_1.playMIDI(harmonyTone);
+        harmony = Button_1.Button.MIDIplay(harmonyTone);
         Note_1.Note.lastHarmony = harmonyTone;
     };
     return Harmony;

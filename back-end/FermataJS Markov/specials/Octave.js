@@ -35,7 +35,7 @@ var Octave = /** @class */ (function (_super) {
                     octaveTone = Note_1.Note.DATABASE[i + octaveDownorUp[Math.floor(Math.random() * octaveDownorUp.length)]];
             }
         }
-        Button_1.playMIDI(octaveTone);
+        Button_1.Button.MIDIplay(octaveTone);
         Note_1.Note.lastOctave = octaveTone;
     };
     return Octave;
